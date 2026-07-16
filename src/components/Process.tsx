@@ -66,6 +66,10 @@ export default function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative max-w-6xl mx-auto">
+          {/* Decorative Connecting Lines (Desktop only) */}
+          <div className="hidden lg:block absolute top-[64px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue-500/0 via-purple-500/50 to-blue-500/0 z-0 pointer-events-none" />
+          <div className="hidden lg:block absolute bottom-[calc(50%-10px)] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue-500/0 via-purple-500/50 to-blue-500/0 z-0 pointer-events-none" />
+
           {processes.map((process, index) => (
             <motion.div
               key={process.title}
@@ -73,18 +77,19 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-purple-500/30 transition-all duration-300 group"
+              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-purple-500/30 transition-all duration-300 group overflow-hidden"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <process.icon className="w-6 h-6 text-blue-400 group-hover:text-purple-400 transition-colors" />
+              <div className="flex flex-col items-center text-center mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 relative group-hover:border-purple-500/50 transition-colors duration-500 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                  <process.icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors relative z-10" />
                 </div>
                 <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
                   {process.title}
                 </h3>
               </div>
 
-              <ul className="space-y-3">
+              <ul className="space-y-3 mt-auto">
                 {process.points.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 mt-1.5 shrink-0" />
