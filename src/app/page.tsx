@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
 import Portfolio from "@/components/Portfolio";
 import FAQ from "@/components/FAQ";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
+      <Process />
       <Portfolio />
       <Pricing />
       <FAQ />
