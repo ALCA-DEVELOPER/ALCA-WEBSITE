@@ -23,7 +23,7 @@ export default function Preloader() {
     if (isLoading) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
   }, [isLoading]);
 
