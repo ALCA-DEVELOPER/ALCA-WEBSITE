@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
+import Image from "next/image";
+
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Why Us", href: "#features" },
@@ -42,11 +44,14 @@ export default function Navbar() {
       >
         <div className={`flex items-center justify-between ${isScrolled || mobileMenuOpen ? "py-3 px-6" : "py-4 px-2 md:px-8"}`}>
           <Link href="/" className="flex items-center gap-2 group shrink-0" onClick={() => setMobileMenuOpen(false)}>
-            <motion.div layout className="text-xl md:text-2xl font-bold tracking-tighter">
-              <span className="text-white">Clea</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-                labs
-              </span>
+            <motion.div layout className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
+              <div className="text-xl md:text-2xl font-bold tracking-tighter flex items-center translate-y-[2px]">
+                <span className="text-white">Clea</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+                  labs
+                </span>
+              </div>
             </motion.div>
           </Link>
 

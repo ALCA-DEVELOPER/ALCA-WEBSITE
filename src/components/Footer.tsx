@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 
 export default function Footer() {
@@ -10,11 +11,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold tracking-tighter text-white">Land</span>
-              <span className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-                exafy
-              </span>
+            <Link href="/" className="inline-flex items-center gap-2 mb-4">
+              <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
+              <div className="text-2xl font-bold tracking-tighter flex items-center">
+                <span className="text-white">Clea</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+                  labs
+                </span>
+              </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               We build fast, scalable, and stunning websites that help your business stand out in the digital world.
