@@ -28,7 +28,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 relative z-10 bg-black">
+    <section id="features" className="py-24 relative z-10 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.h2
@@ -45,7 +45,7 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
             We don't just build websites; we craft digital experiences that drive results.
           </motion.p>
@@ -59,13 +59,13 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-colors group"
+              className="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group"
             >
-              <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>

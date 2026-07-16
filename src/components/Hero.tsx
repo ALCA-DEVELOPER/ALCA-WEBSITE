@@ -7,22 +7,29 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none" />
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-20"
+      >
+        <source src="/background.webm" type="video/webm" />
+      </video>
       
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10 pointer-events-none" />
+      {/* Light Overlay for readability */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] -z-10 pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-gray-200 mb-8 backdrop-blur-sm shadow-sm"
         >
-          <Sparkles className="w-4 h-4 text-blue-400" />
-          <span className="text-sm font-medium text-gray-300">Modern Web Development Agency</span>
+          <Sparkles className="w-4 h-4 text-blue-500" />
+          <span className="text-sm font-medium text-gray-700">Modern Web Development Agency</span>
         </motion.div>
 
         <motion.h1
@@ -41,7 +48,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed"
+          className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl leading-relaxed"
         >
           We build fast, scalable, and stunning websites for businesses and individuals. Turn your vision into reality with our premium digital solutions.
         </motion.p>
@@ -61,7 +68,7 @@ export default function Hero() {
           </Link>
           <Link
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all duration-300 flex items-center justify-center"
+            className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-full border border-gray-200 transition-all duration-300 flex items-center justify-center shadow-sm"
           >
             Konsultasi Gratis
           </Link>

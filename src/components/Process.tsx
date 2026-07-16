@@ -38,7 +38,7 @@ const processes = [
 
 export default function Process() {
   return (
-    <section className="py-24 relative z-10 bg-black overflow-hidden">
+    <section className="py-24 relative z-10 bg-gray-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
@@ -59,17 +59,13 @@ export default function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
             A proven, step-by-step process to transform your ideas into a stunning digital reality.
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative max-w-6xl mx-auto">
-          {/* Decorative Connecting Lines (Desktop only) */}
-          <div className="hidden lg:block absolute top-[64px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue-500/0 via-purple-500/50 to-blue-500/0 z-0 pointer-events-none" />
-          <div className="hidden lg:block absolute bottom-[calc(50%-10px)] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue-500/0 via-purple-500/50 to-blue-500/0 z-0 pointer-events-none" />
-
           {processes.map((process, index) => (
             <motion.div
               key={process.title}
@@ -77,21 +73,20 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-purple-500/30 transition-all duration-300 group overflow-hidden"
+              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white border border-gray-100 hover:border-purple-500/30 hover:shadow-md shadow-sm transition-all duration-300 group"
             >
-              <div className="flex flex-col items-center text-center mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 flex items-center justify-center mb-6 relative group-hover:border-purple-500/50 transition-colors duration-500 shadow-lg">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-                  <process.icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors relative z-10" />
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <process.icon className="w-6 h-6 text-blue-400 group-hover:text-purple-400 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                   {process.title}
                 </h3>
               </div>
 
-              <ul className="space-y-3 mt-auto">
+              <ul className="space-y-3">
                 {process.points.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 mt-1.5 shrink-0" />
                     <span>{point}</span>
                   </li>

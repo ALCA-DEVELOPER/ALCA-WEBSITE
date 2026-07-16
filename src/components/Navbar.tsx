@@ -38,7 +38,7 @@ export default function Navbar() {
         }}
         className={`pointer-events-auto overflow-hidden transition-colors duration-300 ${
           isScrolled || mobileMenuOpen
-            ? "w-[95%] md:w-[700px] bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+            ? "w-[95%] md:w-[700px] bg-white/70 backdrop-blur-2xl border border-gray-200 shadow-lg shadow-black/5"
             : "w-full md:w-[1200px] bg-transparent border-transparent"
         } ${mobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}
       >
@@ -47,7 +47,7 @@ export default function Navbar() {
             <motion.div layout className="flex items-center gap-3">
               <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
               <div className="text-xl md:text-2xl font-bold tracking-tighter flex items-center translate-y-[2px]">
-                <span className="text-white">Clea</span>
+                <span className="text-gray-900">Clea</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
                   labs
                 </span>
@@ -61,7 +61,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {link.name}
               </Link>
@@ -71,7 +71,7 @@ export default function Navbar() {
               className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center ${
                 isScrolled
                   ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 px-4 py-2"
-                  : "bg-white/10 hover:bg-white/20 border border-white/10 px-5 py-2.5"
+                  : "bg-gray-900 hover:bg-gray-800 shadow-md px-5 py-2.5"
               }`}
             >
               Get Started
@@ -81,7 +81,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <motion.button
             layout
-            className="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none"
+            className="md:hidden text-gray-600 hover:text-gray-900 p-2 focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -128,10 +128,10 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center justify-between w-full p-4 rounded-2xl bg-white/[0.04] border border-white/5 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all active:scale-[0.98]"
+                      className="flex items-center justify-between w-full p-4 rounded-2xl bg-gray-50 border border-gray-100 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-all active:scale-[0.98]"
                     >
                       <span>{link.name}</span>
-                      <span className="text-gray-500 text-xs font-bold uppercase tracking-widest">{">"}</span>
+                      <span className="text-gray-400 text-xs font-bold uppercase tracking-widest">{">"}</span>
                     </Link>
                   </motion.div>
                 ))}

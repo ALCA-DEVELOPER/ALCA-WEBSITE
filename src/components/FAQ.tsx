@@ -6,20 +6,20 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Berapa lama proses pembuatannya?",
-    answer: "Waktu pengerjaan bergantung pada kompleksitas proyek. Untuk Starter Landing Page, kami dapat menyelesaikannya dalam waktu 3 hari. Sementara untuk Company Profile sekitar 1 minggu, dan E-Commerce atau Custom Dashboard membutuhkan waktu 2-4 minggu.",
+    question: "How long does the development process take?",
+    answer: "The timeline depends on the project's complexity. A Starter Landing Page can be completed in 3 days. A Professional Company Profile takes about 1 week, and an E-Commerce or Custom Dashboard takes 2-4 weeks.",
   },
   {
-    question: "Apakah ada biaya maintenance bulanan?",
-    answer: "Tidak ada biaya wajib bulanan. Namun, kami menyediakan layanan maintenance opsional jika Anda membutuhkan bantuan untuk update konten, backup rutin, dan pemantauan keamanan.",
+    question: "Are there any monthly maintenance fees?",
+    answer: "There are no mandatory monthly fees. However, we offer optional maintenance services if you need help with content updates, regular backups, and security monitoring.",
   },
   {
-    question: "Apakah domain dan hosting sudah termasuk?",
-    answer: "Ya, untuk paket Professional dan E-Commerce, kami sudah menyertakan gratis domain (.com/.id) dan hosting untuk tahun pertama. Untuk paket Starter, kami dapat membantu menyiapkannya dengan biaya terpisah.",
+    question: "Are domain and hosting included?",
+    answer: "Yes, for Professional and E-Commerce packages, we include a free domain (.com) and hosting for the first year. For the Starter package, we can help set it up for a separate fee.",
   },
   {
-    question: "Apakah saya bisa request desain custom?",
-    answer: "Tentu saja! Semua paket kami (kecuali Starter basic) mencakup custom UI/UX design. Kami akan mendesain website yang benar-benar merepresentasikan identitas brand Anda.",
+    question: "Can I request a custom design?",
+    answer: "Absolutely! All our packages (except the basic Starter) include custom UI/UX design. We will design a website that truly represents your brand identity.",
   },
 ];
 
@@ -31,7 +31,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 relative z-10 bg-black">
+    <section id="faq" className="py-24 relative z-10 bg-white">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         <div className="text-center mb-16">
           <motion.h2
@@ -48,7 +48,7 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-600 text-lg"
           >
             Got questions? We've got answers.
           </motion.p>
@@ -62,13 +62,13 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="border border-white/10 rounded-2xl bg-white/[0.02] overflow-hidden"
+              className="border border-gray-200 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors overflow-hidden"
             >
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
               >
-                <span className="text-lg font-medium text-gray-200">{faq.question}</span>
+                <span className="text-lg font-medium text-gray-900">{faq.question}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
@@ -84,7 +84,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-6 pb-6 text-gray-400 leading-relaxed">
+                    <div className="px-6 pb-6 text-gray-600 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>

@@ -47,7 +47,7 @@ const pricingTiers = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 relative z-10 bg-black overflow-hidden">
+    <section id="pricing" className="py-24 relative z-10 bg-gray-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-blue-900/10 blur-[100px] rounded-full pointer-events-none" />
       
@@ -67,7 +67,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
             Choose the perfect plan for your digital needs. No hidden fees, just great value.
           </motion.p>
@@ -81,10 +81,10 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative p-8 rounded-3xl border transition-all duration-300 hover:scale-[1.02] ${
+              className={`relative p-8 rounded-3xl border transition-all duration-300 hover:scale-105 ${
                 tier.popular
-                  ? "bg-gradient-to-b from-blue-900/20 to-purple-900/10 border-blue-500/30"
-                  : "bg-white/[0.02] border-white/5"
+                  ? "bg-white shadow-xl shadow-blue-900/5 border-blue-500/30 scale-105"
+                  : "bg-white border-gray-200 shadow-sm"
               }`}
             >
               {tier.popular && (
@@ -94,10 +94,10 @@ export default function Pricing() {
               )}
               
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-white mb-2">{tier.name}</h3>
-                <p className="text-sm text-gray-400 h-10 mb-4">{tier.target}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{tier.name}</h3>
+                <p className="text-sm text-gray-500 h-10 mb-4">{tier.target}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold text-white">{tier.price}</span>
+                  <span className="text-4xl font-extrabold text-gray-900">{tier.price}</span>
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ export default function Pricing() {
                 {tier.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm leading-relaxed">{feature}</span>
+                    <span className="text-gray-600 text-sm leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -114,7 +114,7 @@ export default function Pricing() {
                 className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 ${
                   tier.popular
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-blue-500/25"
-                    : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
+                    : "bg-gray-50 hover:bg-gray-100 text-gray-900 border border-gray-200"
                 }`}
               >
                 Pilih Paket Ini

@@ -33,7 +33,7 @@ export default function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
         >
           {/* Subtle background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
@@ -72,14 +72,14 @@ export default function Preloader() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-3xl md:text-4xl font-bold tracking-tighter flex items-center"
             >
-              <span className="text-white">Clea</span>
+              <span className="text-gray-900">Clea</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
                 labs
               </span>
             </motion.div>
 
             {/* Loading Bar */}
-            <div className="w-48 h-1 bg-white/10 rounded-full mt-4 overflow-hidden">
+            <div className="w-48 h-1 bg-gray-200 rounded-full mt-4 overflow-hidden">
               <motion.div
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
