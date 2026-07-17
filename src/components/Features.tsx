@@ -5,22 +5,22 @@ import { Code2, Zap, LayoutTemplate, Headset } from "lucide-react";
 
 const features = [
   {
-    icon: <Code2 className="w-8 h-8 text-blue-400" />,
+    icon: <Code2 className="w-8 h-8 text-sky-500" />,
     title: "Clean Code",
     description: "Built with modern, maintainable, and scalable code architectures ensuring long-term stability.",
   },
   {
-    icon: <Zap className="w-8 h-8 text-sky-400" />,
+    icon: <Zap className="w-8 h-8 text-sky-500" />,
     title: "Blazing Fast Performance",
     description: "Optimized for speed. We ensure your website loads instantly to keep your users engaged.",
   },
   {
-    icon: <LayoutTemplate className="w-8 h-8 text-indigo-400" />,
+    icon: <LayoutTemplate className="w-8 h-8 text-sky-500" />,
     title: "Pixel-Perfect UI",
     description: "Stunning, responsive designs that look flawless on any device and screen size.",
   },
   {
-    icon: <Headset className="w-8 h-8 text-pink-400" />,
+    icon: <Headset className="w-8 h-8 text-sky-500" />,
     title: "24/7 Support",
     description: "Dedicated assistance whenever you need it. We're here to help your business grow.",
   },
