@@ -2,43 +2,46 @@
 
 import { motion } from "framer-motion";
 import { Lightbulb, PenTool, Code2, Bug, Rocket, ShieldCheck } from "lucide-react";
-
-const processes = [
-  {
-    title: "1. Discovery & Strategy",
-    points: ["Goal definition", "Target audience analysis", "Project roadmap"],
-    icon: Lightbulb,
-  },
-  {
-    title: "2. Wireframing & UI/UX",
-    points: ["Visual mockups", "User flow mapping", "Design approval"],
-    icon: PenTool,
-  },
-  {
-    title: "3. Development & Coding",
-    points: ["Frontend & Backend", "Responsive design", "CMS Integration"],
-    icon: Code2,
-  },
-  {
-    title: "4. Testing & QA",
-    points: ["Bug squashing", "Performance checks", "Cross-browser testing"],
-    icon: Bug,
-  },
-  {
-    title: "5. Deployment & Launch",
-    points: ["Server setup", "Domain configuration", "Go-live execution"],
-    icon: Rocket,
-  },
-  {
-    title: "6. Maintenance & Support",
-    points: ["Regular updates", "Security patches", "24/7 monitoring"],
-    icon: ShieldCheck,
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Process() {
+  const { t } = useLanguage();
+
+  const processes = [
+    {
+      title: t("proc_1_title"),
+      points: [t("proc_1_p1"), t("proc_1_p2"), t("proc_1_p3")],
+      icon: Lightbulb,
+    },
+    {
+      title: t("proc_2_title"),
+      points: [t("proc_2_p1"), t("proc_2_p2"), t("proc_2_p3")],
+      icon: PenTool,
+    },
+    {
+      title: t("proc_3_title"),
+      points: [t("proc_3_p1"), t("proc_3_p2"), t("proc_3_p3")],
+      icon: Code2,
+    },
+    {
+      title: t("proc_4_title"),
+      points: [t("proc_4_p1"), t("proc_4_p2"), t("proc_4_p3")],
+      icon: Bug,
+    },
+    {
+      title: t("proc_5_title"),
+      points: [t("proc_5_p1"), t("proc_5_p2"), t("proc_5_p3")],
+      icon: Rocket,
+    },
+    {
+      title: t("proc_6_title"),
+      points: [t("proc_6_p1"), t("proc_6_p2"), t("proc_6_p3")],
+      icon: ShieldCheck,
+    },
+  ];
+
   return (
-    <section className="py-24 relative z-10 bg-transparent overflow-hidden">
+    <section id="process" className="py-24 relative z-10 bg-transparent overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
@@ -52,7 +55,7 @@ export default function Process() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            How We <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">Work</span>
+            {t("proc_title")} <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">{t("proc_title_highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -61,7 +64,7 @@ export default function Process() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
-            A proven, step-by-step process to transform your ideas into a stunning digital reality.
+            {t("proc_subtitle")}
           </motion.p>
         </div>
 

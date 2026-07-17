@@ -3,28 +3,30 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    question: "How long does the development process take?",
-    answer: "The timeline depends on the project's complexity. A Starter Landing Page can be completed in 3 days. A Professional Company Profile takes about 1 week, and an E-Commerce or Custom Dashboard takes 2-4 weeks.",
-  },
-  {
-    question: "Are there any monthly maintenance fees?",
-    answer: "There are no mandatory monthly fees. However, we offer optional maintenance services if you need help with content updates, regular backups, and security monitoring.",
-  },
-  {
-    question: "Are domain and hosting included?",
-    answer: "Yes, for Professional and E-Commerce packages, we include a free domain (.com) and hosting for the first year. For the Starter package, we can help set it up for a separate fee.",
-  },
-  {
-    question: "Can I request a custom design?",
-    answer: "Absolutely! All our packages (except the basic Starter) include custom UI/UX design. We will design a website that truly represents your brand identity.",
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function FAQ() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: t("faq_q1"),
+      answer: t("faq_a1"),
+    },
+    {
+      question: t("faq_q2"),
+      answer: t("faq_a2"),
+    },
+    {
+      question: t("faq_q3"),
+      answer: t("faq_a3"),
+    },
+    {
+      question: t("faq_q4"),
+      answer: t("faq_a4"),
+    },
+  ];
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -41,7 +43,7 @@ export default function FAQ() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Frequently Asked <span className="text-sky-500">Questions</span>
+            {t("faq_title")} <span className="text-sky-500">{t("faq_title_highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +52,7 @@ export default function FAQ() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-lg"
           >
-            Got questions? We've got answers.
+            {t("faq_subtitle")}
           </motion.p>
         </div>
 

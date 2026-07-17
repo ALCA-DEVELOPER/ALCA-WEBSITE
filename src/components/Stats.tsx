@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Users, Briefcase, Star, Trophy } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 function Counter({ from, to, suffix = "" }: { from: number; to: number; suffix?: string }) {
   const [count, setCount] = useState(from);
@@ -33,38 +34,34 @@ function Counter({ from, to, suffix = "" }: { from: number; to: number; suffix?:
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-const statsData = [
-  {
-    icon: <Briefcase className="w-6 h-6" />,
-    value: 120,
-    suffix: "+",
-    label: "Project Selesai",
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
-    value: 85,
-    suffix: "+",
-    label: "Klien Puas",
-  },
-  {
-    icon: <Star className="w-6 h-6" />,
-    value: 5,
-    suffix: "",
-    label: "Tahun Pengalaman",
-  },
-  {
-    icon: <Trophy className="w-6 h-6" />,
-    value: 12,
-    suffix: "+",
-    label: "Penghargaan",
-  },
-];
-
 export default function Stats() {
+  const { t } = useLanguage();
+
+  const statsData = [
+    {
+      icon: <Briefcase className="w-6 h-6" />,
+      value: 120,
+      suffix: "+",
+      label: t("stat_projects"),
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      value: 85,
+      suffix: "+",
+      label: t("stat_clients"),
+    },
+    {
+      icon: <Star className="w-6 h-6" />,
+      value: 3,
+      suffix: "",
+      label: t("stat_experience"),
+    },
+  ];
+
   return (
-    <section className="py-20 bg-gray-50 relative z-10 border-t border-b border-gray-100">
+    <section className="py-20 bg-gray-50 relative z-10 border-b border-gray-100">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center max-w-5xl mx-auto">
           {statsData.map((stat, index) => (
             <motion.div
               key={stat.label}

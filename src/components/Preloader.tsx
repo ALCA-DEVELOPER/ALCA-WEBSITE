@@ -1,20 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Preloader() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500); // slightly longer to enjoy the animation
-
-    return () => clearTimeout(timer);
-  }, []);
+  const { isLoading } = useLanguage();
 
   // Prevent scrolling while loading
   useEffect(() => {

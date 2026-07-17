@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "We build fast, scalable, and stunning websites for businesses and individuals.",
 };
 
+import LanguageWrapper from "@/components/LanguageWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="min-h-screen font-sans antialiased overflow-x-hidden selection:bg-sky-500 selection:text-white">
-        {children}
+        <LanguageWrapper>{children}</LanguageWrapper>
       </body>
     </html>
   );

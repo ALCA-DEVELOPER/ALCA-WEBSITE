@@ -6,17 +6,20 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 import Image from "next/image";
-
-const navLinks = [
-  { name: "Services", href: "#services" },
-  { name: "Why Us", href: "#features" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "FAQ", href: "#faq" },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, language, setLanguage } = useLanguage();
+
+  const navLinks = [
+    { name: t("nav_why_us"), href: "#features" },
+    { name: t("nav_process"), href: "#process" },
+    { name: t("nav_services"), href: "#pricing" },
+    { name: t("nav_portfolio"), href: "#portfolio" },
+    { name: t("nav_faq"), href: "#faq" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +41,7 @@ export default function Navbar() {
         }}
         className={`pointer-events-auto overflow-hidden transition-colors duration-300 ${
           isScrolled || mobileMenuOpen
-            ? "w-[95%] md:w-[700px] bg-white/70 backdrop-blur-2xl border border-gray-200 shadow-lg shadow-black/5"
+            ? "w-[95%] md:w-[950px] bg-white/70 backdrop-blur-2xl border border-gray-200 shadow-lg shadow-black/5"
             : "w-full md:w-[1200px] bg-transparent border-transparent"
         } ${mobileMenuOpen ? "rounded-3xl" : "rounded-full"}`}
       >
@@ -56,28 +59,40 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <motion.nav layout className="hidden md:flex items-center gap-6 lg:gap-8">
+          <motion.nav layout className="hidden md:flex items-center gap-6 lg:gap-8 ml-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium whitespace-nowrap transition-colors ${
                   isScrolled || mobileMenuOpen ? "text-gray-600 hover:text-gray-900" : "text-gray-200 hover:text-white"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="#pricing"
-              className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center ${
-                isScrolled
-                  ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 py-2"
-                  : "bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2.5"
-              }`}
-            >
-              Get Started
-            </Link>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setLanguage(language === 'id' ? 'en' : 'id')}
+                className={`text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
+                  isScrolled || mobileMenuOpen 
+                    ? "bg-gray-100 text-gray-800 hover:bg-gray-200" 
+                    : "bg-white/20 text-white hover:bg-white/30"
+                }`}
+              >
+                {language === 'id' ? 'ID' : 'EN'}
+              </button>
+              <Link
+                href="#pricing"
+                className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center ${
+                  isScrolled
+                    ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 py-2"
+                    : "bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2.5"
+                }`}
+              >
+                {t("nav_get_started")}
+              </Link>
+            </div>
           </motion.nav>
 
           {/* Mobile Menu Toggle */}
@@ -145,14 +160,22 @@ export default function Navbar() {
                     open: { opacity: 1, y: 0 },
                     closed: { opacity: 0, y: 10 }
                   }}
-                  className="mt-3 relative z-10"
+                  className="mt-3 relative z-10 flex gap-2"
                 >
+                  <button
+                    onClick={() => {
+                      setLanguage(language === 'id' ? 'en' : 'id');
+                    }}
+                    className="flex-shrink-0 w-12 py-4 text-center text-sm font-bold text-gray-700 bg-gray-100 rounded-2xl active:scale-[0.98] transition-transform"
+                  >
+                    {language === 'id' ? 'ID' : 'EN'}
+                  </button>
                   <Link
                     href="#pricing"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block w-full py-4 text-center text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-2xl shadow-[0_0_30px_-10px_rgba(14,165,233,0.6)] active:scale-[0.98] transition-transform"
+                    className="flex-grow py-4 text-center text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-2xl shadow-[0_0_30px_-10px_rgba(14,165,233,0.6)] active:scale-[0.98] transition-transform"
                   >
-                    Get Started
+                    {t("nav_get_started")}
                   </Link>
                 </motion.div>
               </motion.div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const projects = [
   {
@@ -32,6 +33,8 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const { t } = useLanguage();
+
   return (
     <section id="portfolio" className="py-24 relative z-10 bg-white">
       <div className="container mx-auto px-6 md:px-12">
@@ -43,7 +46,7 @@ export default function Portfolio() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Recent <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">Works</span>
+            {t("port_title")} <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">{t("port_title_highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -52,7 +55,7 @@ export default function Portfolio() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
-            A glimpse into the digital experiences we've crafted for our clients.
+            {t("port_subtitle")}
           </motion.p>
         </div>
 

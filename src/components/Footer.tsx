@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 
 export default function Footer() {
+  const { t } = useLanguage();
   const currentYear = 2026;
 
   return (
@@ -21,7 +25,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              We build fast, scalable, and stunning websites that help your business stand out in the digital world.
+              {t("foot_desc")}
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Twitter">
@@ -49,27 +53,27 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4">Services</h4>
+            <h4 className="text-gray-900 font-semibold mb-4">{t("foot_services")}</h4>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><Link href="#" className="hover:text-blue-600 transition-colors">Landing Pages</Link></li>
-              <li><Link href="#" className="hover:text-blue-600 transition-colors">Company Profiles</Link></li>
-              <li><Link href="#" className="hover:text-blue-600 transition-colors">E-Commerce</Link></li>
-              <li><Link href="#" className="hover:text-blue-600 transition-colors">Custom Dashboards</Link></li>
+              <li><Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_serv_1")}</Link></li>
+              <li><Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_serv_2")}</Link></li>
+              <li><Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_serv_3")}</Link></li>
+              <li><Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_serv_4")}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4">Company</h4>
+            <h4 className="text-gray-900 font-semibold mb-4">{t("foot_company")}</h4>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><Link href="#features" className="hover:text-blue-600 transition-colors">About Us</Link></li>
-              <li><Link href="#portfolio" className="hover:text-blue-600 transition-colors">Our Work</Link></li>
-              <li><Link href="#pricing" className="hover:text-blue-600 transition-colors">Pricing</Link></li>
-              <li><Link href="#faq" className="hover:text-blue-600 transition-colors">FAQ</Link></li>
+              <li><Link href="#features" className="hover:text-blue-600 transition-colors">{t("foot_comp_1")}</Link></li>
+              <li><Link href="#portfolio" className="hover:text-blue-600 transition-colors">{t("foot_comp_2")}</Link></li>
+              <li><Link href="#pricing" className="hover:text-blue-600 transition-colors">{t("foot_comp_3")}</Link></li>
+              <li><Link href="#faq" className="hover:text-blue-600 transition-colors">{t("foot_comp_4")}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4">Contact</h4>
+            <h4 className="text-gray-900 font-semibold mb-4">{t("foot_contact")}</h4>
             <ul className="space-y-3 text-sm text-gray-600">
               <li>hello@clealabs.com</li>
               <li>+62 812 3456 7890</li>
@@ -80,11 +84,11 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} Clealabs. All rights reserved.
+            &copy; {currentYear} Clealabs. {t("foot_rights")}
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
-            <Link href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_privacy")}</Link>
+            <Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_terms")}</Link>
           </div>
         </div>
       </div>

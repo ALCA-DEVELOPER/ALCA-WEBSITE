@@ -2,31 +2,34 @@
 
 import { motion } from "framer-motion";
 import { Code2, Zap, LayoutTemplate, Headset } from "lucide-react";
-
-const features = [
-  {
-    icon: <Code2 className="w-8 h-8 text-sky-500" />,
-    title: "Clean Code",
-    description: "Built with modern, maintainable, and scalable code architectures ensuring long-term stability.",
-  },
-  {
-    icon: <Zap className="w-8 h-8 text-sky-500" />,
-    title: "Blazing Fast Performance",
-    description: "Optimized for speed. We ensure your website loads instantly to keep your users engaged.",
-  },
-  {
-    icon: <LayoutTemplate className="w-8 h-8 text-sky-500" />,
-    title: "Pixel-Perfect UI",
-    description: "Stunning, responsive designs that look flawless on any device and screen size.",
-  },
-  {
-    icon: <Headset className="w-8 h-8 text-sky-500" />,
-    title: "24/7 Support",
-    description: "Dedicated assistance whenever you need it. We're here to help your business grow.",
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Features() {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: <Code2 className="w-8 h-8 text-sky-500" />,
+      title: t("feat_1_title"),
+      description: t("feat_1_desc"),
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-sky-500" />,
+      title: t("feat_2_title"),
+      description: t("feat_2_desc"),
+    },
+    {
+      icon: <LayoutTemplate className="w-8 h-8 text-sky-500" />,
+      title: t("feat_3_title"),
+      description: t("feat_3_desc"),
+    },
+    {
+      icon: <Headset className="w-8 h-8 text-sky-500" />,
+      title: t("feat_4_title"),
+      description: t("feat_4_desc"),
+    },
+  ];
+
   return (
     <section id="features" className="py-24 relative z-10 bg-white">
       <div className="container mx-auto px-6 md:px-12">
@@ -38,7 +41,7 @@ export default function Features() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Why Choose <span className="text-sky-500">Us</span>
+            {t("feat_title")} <span className="text-sky-500">{t("feat_title_highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +50,7 @@ export default function Features() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 max-w-2xl mx-auto text-lg"
           >
-            We don't just build websites; we craft digital experiences that drive results.
+            {t("feat_subtitle")}
           </motion.p>
         </div>
 
