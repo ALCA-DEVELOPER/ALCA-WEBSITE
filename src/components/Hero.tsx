@@ -19,7 +19,7 @@ export default function Hero() {
       </video>
       
       {/* Dark Vignette Overlay for edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.7)_120%)] -z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.9)_120%)] -z-10 pointer-events-none" />
       
       {/* Smooth transition to the next section (white) */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent z-0 pointer-events-none" />
