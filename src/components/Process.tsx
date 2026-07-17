@@ -79,7 +79,7 @@ export default function Process() {
               className="relative z-10 flex flex-col p-8 rounded-3xl bg-white border border-gray-100 hover:border-sky-500/30 hover:shadow-md shadow-sm transition-all duration-300 group"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/10 to-blue-500/10 border border-sky-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500/10 to-blue-500/10 border border-sky-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <process.icon className="w-6 h-6 text-sky-400 group-hover:text-blue-500 transition-colors" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-sky-500 group-hover:to-blue-600 transition-all duration-300">

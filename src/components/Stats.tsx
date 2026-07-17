@@ -8,7 +8,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 function Counter({ from, to, suffix = "" }: { from: number; to: number; suffix?: string }) {
   const [count, setCount] = useState(from);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
     if (isInView) {
