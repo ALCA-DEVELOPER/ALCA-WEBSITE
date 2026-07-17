@@ -65,13 +65,16 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
+              href={project.url || "#"}
+              target={project.url ? "_blank" : "_self"}
+              rel="noopener noreferrer"
               key={project.title}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-xl overflow-hidden aspect-video bg-gray-50 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col"
+              className="group relative rounded-xl overflow-hidden aspect-video bg-gray-50 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col block cursor-pointer"
             >
               {/* Browser Chrome (Mac OS Style) */}
               <div className="h-8 bg-gray-100 border-b border-gray-200 flex items-center px-3 gap-1.5 shrink-0 z-10 relative">
@@ -115,13 +118,13 @@ export default function Portfolio() {
                     ))}
                   </div>
                   {project.url && (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-sky-50 transition-colors translate-y-4 group-hover:translate-y-0 duration-300 delay-150 shadow-lg shadow-black/20">
+                    <div className="w-12 h-12 rounded-full bg-white text-gray-900 flex items-center justify-center group-hover:bg-sky-50 transition-colors translate-y-4 group-hover:translate-y-0 duration-300 delay-150 shadow-lg shadow-black/20">
                       <ExternalLink size={20} />
-                    </a>
+                    </div>
                   )}
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -60,8 +60,8 @@ export default function Stats() {
 
   return (
     <section className="py-20 bg-gray-50 relative z-10 border-b border-gray-100">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center max-w-5xl mx-auto">
+      <div className="container mx-auto px-4 md:px-12">
+        <div className="grid grid-cols-3 gap-2 md:gap-12 text-center max-w-5xl mx-auto">
           {statsData.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -71,13 +71,13 @@ export default function Stats() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex flex-col items-center"
             >
-              <div className="w-14 h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-6 text-sky-500">
-                {stat.icon}
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-3 md:mb-6 text-sky-500 mx-auto">
+                <div className="scale-75 md:scale-100">{stat.icon}</div>
               </div>
-              <h4 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 tracking-tight">
+              <h4 className="text-2xl md:text-5xl font-extrabold text-gray-900 mb-1 md:mb-2 tracking-tight">
                 <Counter from={0} to={stat.value} suffix={stat.suffix} />
               </h4>
-              <p className="text-sm md:text-base text-gray-600 font-medium">{stat.label}</p>
+              <p className="text-xs md:text-base text-gray-600 font-medium leading-tight">{stat.label}</p>
             </motion.div>
           ))}
         </div>

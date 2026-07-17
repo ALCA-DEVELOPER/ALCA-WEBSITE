@@ -65,8 +65,8 @@ export const dictionaries = {
     proc_6_p3: "Pemantauan 24/7",
 
     // Portfolio
-    port_title: "Karya",
-    port_title_highlight: "Terbaru",
+    port_title: "Hasil",
+    port_title_highlight: "Kerja",
     port_subtitle: "Sekilas tentang pengalaman digital yang kami rancang untuk klien kami.",
 
     // Pricing
@@ -196,8 +196,8 @@ export const dictionaries = {
     proc_6_p3: "24/7 monitoring",
 
     // Portfolio
-    port_title: "Recent",
-    port_title_highlight: "Works",
+    port_title: "Our",
+    port_title_highlight: "Work",
     port_subtitle: "A glimpse into the digital experiences we've crafted for our clients.",
 
     // Pricing

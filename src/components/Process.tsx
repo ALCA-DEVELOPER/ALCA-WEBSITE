@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, PenTool, Code2, Bug, Rocket, ShieldCheck } from "lucide-react";
+import { Lightbulb, PenTool, Terminal, Bug, Rocket, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Process() {
@@ -21,7 +21,7 @@ export default function Process() {
     {
       title: t("proc_3_title"),
       points: [t("proc_3_p1"), t("proc_3_p2"), t("proc_3_p3")],
-      icon: Code2,
+      icon: Terminal,
     },
     {
       title: t("proc_4_title"),
