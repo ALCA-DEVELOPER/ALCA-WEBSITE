@@ -42,7 +42,7 @@ export default function Hero() {
           className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-4xl leading-tight text-white"
         >
           Elevate Your Digital Presence with{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
             Clealabs
           </span>
         </motion.h1>
