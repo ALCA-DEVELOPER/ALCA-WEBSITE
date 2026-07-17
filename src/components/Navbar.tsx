@@ -47,7 +47,7 @@ export default function Navbar() {
             <motion.div layout className="flex items-center gap-3">
               <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
               <div className="text-xl md:text-2xl font-bold tracking-tighter flex items-center translate-y-[2px]">
-                <span className="text-gray-900">Clea</span>
+                <span className={isScrolled || mobileMenuOpen ? "text-gray-900" : "text-white"}>Clea</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
                   labs
                 </span>
@@ -61,7 +61,9 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled || mobileMenuOpen ? "text-gray-600 hover:text-gray-900" : "text-gray-200 hover:text-white"
+                }`}
               >
                 {link.name}
               </Link>
@@ -71,7 +73,7 @@ export default function Navbar() {
               className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center ${
                 isScrolled
                   ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 py-2"
-                  : "bg-gray-900 hover:bg-gray-800 shadow-md px-5 py-2.5"
+                  : "bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-5 py-2.5"
               }`}
             >
               Get Started
@@ -81,7 +83,9 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <motion.button
             layout
-            className="md:hidden text-gray-600 hover:text-gray-900 p-2 focus:outline-none"
+            className={`md:hidden p-2 focus:outline-none ${
+              isScrolled || mobileMenuOpen ? "text-gray-600 hover:text-gray-900" : "text-white"
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
