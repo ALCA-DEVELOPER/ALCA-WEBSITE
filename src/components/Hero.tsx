@@ -29,17 +29,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-gray-200 mb-8 backdrop-blur-sm shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-sm shadow-sm"
         >
           <Sparkles className="w-4 h-4 text-blue-500" />
-          <span className="text-sm font-medium text-gray-700">Modern Web Development Agency</span>
+          <span className="text-sm font-medium text-white">Modern Web Development Agency</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-4xl leading-tight"
+          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-4xl leading-tight text-white"
         >
           Elevate Your Digital Presence with{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl leading-relaxed"
+          className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl leading-relaxed"
         >
           We build fast, scalable, and stunning websites for businesses and individuals. Turn your vision into reality with our premium digital solutions.
         </motion.p>
@@ -71,7 +71,7 @@ export default function Hero() {
           </Link>
           <Link
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-full border border-gray-200 transition-all duration-300 flex items-center justify-center shadow-sm"
+            className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
           >
             Konsultasi Gratis
           </Link>
