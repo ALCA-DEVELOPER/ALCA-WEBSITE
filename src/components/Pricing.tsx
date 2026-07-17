@@ -97,7 +97,7 @@ export default function Pricing() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{tier.name}</h3>
                 <p className="text-sm text-gray-500 h-10 mb-4">{tier.target}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold text-gray-900">{tier.price}</span>
+                  <span className="text-3xl xl:text-4xl font-extrabold text-gray-900 tracking-tight">{tier.price}</span>
                 </div>
               </div>
 

@@ -1,6 +1,7 @@
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Stats from "@/components/Stats";
 import Features from "@/components/Features";
 import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
@@ -14,6 +15,7 @@ export default function Home() {
       <Preloader />
       <Navbar />
       <Hero />
+      <Stats />
       <Features />
       <Process />
       <Portfolio />
