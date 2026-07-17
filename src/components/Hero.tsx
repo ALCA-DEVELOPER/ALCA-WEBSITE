@@ -6,7 +6,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-[100dvh] flex items-center justify-center pt-28 pb-10 lg:pt-0 lg:pb-0 overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
@@ -29,7 +29,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8 backdrop-blur-sm shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 md:mb-8 backdrop-blur-sm shadow-sm"
         >
           <Sparkles className="w-4 h-4 text-blue-500" />
           <span className="text-sm font-medium text-white">Modern Web Development Agency</span>
@@ -39,7 +39,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-4xl leading-tight text-white"
+          className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-8 max-w-4xl leading-tight text-white"
         >
           Elevate Your Digital Presence with{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl leading-relaxed"
+          className="text-base md:text-xl text-gray-200 mb-8 md:mb-12 max-w-2xl leading-relaxed"
         >
           We build fast, scalable, and stunning websites for businesses and individuals. Turn your vision into reality with our premium digital solutions.
         </motion.p>
@@ -60,7 +60,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto"
         >
           <Link
             href="#pricing"
