@@ -72,7 +72,7 @@ export default function Preloader() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-3xl md:text-4xl font-bold tracking-tighter flex items-center"
             >
-              <span className="text-gray-900">Clea</span>
+              <span className="text-white">Clea</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
                 labs
               </span>
