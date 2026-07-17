@@ -21,7 +21,7 @@ const projects = [
     title: "Creative Agency Portfolio",
     stack: ["Next.js", "Framer Motion", "GSAP"],
     image: "/project-3.jpg",
-    color: "from-purple-500 to-pink-500",
+    color: "from-blue-400 to-indigo-500",
   },
   {
     title: "Real Estate Platform",
@@ -43,7 +43,7 @@ export default function Portfolio() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Recent <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Works</span>
+            Recent <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">Works</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

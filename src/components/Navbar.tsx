@@ -48,7 +48,7 @@ export default function Navbar() {
               <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
               <div className="text-xl md:text-2xl font-bold tracking-tighter flex items-center translate-y-[2px]">
                 <span className="text-gray-900">Clea</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
                   labs
                 </span>
               </div>
@@ -70,7 +70,7 @@ export default function Navbar() {
               href="#pricing"
               className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center ${
                 isScrolled
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 px-4 py-2"
+                  ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 py-2"
                   : "bg-gray-900 hover:bg-gray-800 shadow-md px-5 py-2.5"
               }`}
             >
@@ -114,7 +114,7 @@ export default function Navbar() {
               >
                 {/* Decorative orbs inside the expanded menu */}
                 <div className="absolute top-10 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full pointer-events-none" />
-                <div className="absolute bottom-10 left-0 w-32 h-32 bg-purple-500/10 blur-3xl rounded-full pointer-events-none" />
+                <div className="absolute bottom-10 left-0 w-32 h-32 bg-sky-500/10 blur-3xl rounded-full pointer-events-none" />
                 
                 {navLinks.map((link) => (
                   <motion.div 
@@ -146,7 +146,7 @@ export default function Navbar() {
                   <Link
                     href="#pricing"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block w-full py-4 text-center text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-[0_0_30px_-10px_rgba(59,130,246,0.6)] active:scale-[0.98] transition-transform"
+                    className="block w-full py-4 text-center text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-2xl shadow-[0_0_30px_-10px_rgba(14,165,233,0.6)] active:scale-[0.98] transition-transform"
                   >
                     Get Started
                   </Link>

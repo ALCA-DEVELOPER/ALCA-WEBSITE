@@ -9,8 +9,8 @@
 
 @layer base {
   :root {
-    --background: #000000;
-    --foreground: #ffffff;
+    --background: #f0f9ff; /* sky-50, a very soft light blue from the palette */
+    --foreground: #0f172a; /* slate-900 for readable text */
   }
 }
 

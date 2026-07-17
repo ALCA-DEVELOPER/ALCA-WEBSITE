@@ -73,7 +73,7 @@ export default function Preloader() {
               className="text-3xl md:text-4xl font-bold tracking-tighter flex items-center"
             >
               <span className="text-gray-900">Clea</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
                 labs
               </span>
             </motion.div>
@@ -84,7 +84,7 @@ export default function Preloader() {
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                className="h-full bg-gradient-to-r from-sky-400 to-blue-500 rounded-full"
               />
             </div>
           </motion.div>

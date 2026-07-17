@@ -47,7 +47,7 @@ const pricingTiers = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 relative z-10 bg-gray-50 overflow-hidden">
+    <section id="pricing" className="py-24 relative z-10 bg-transparent overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-blue-900/10 blur-[100px] rounded-full pointer-events-none" />
       
@@ -60,7 +60,7 @@ export default function Pricing() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Simple, Transparent <span className="text-purple-500">Pricing</span>
+            Simple, Transparent <span className="text-sky-500">Pricing</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export default function Pricing() {
               }`}
             >
               {tier.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-xs font-bold uppercase tracking-wider">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full text-xs font-bold uppercase tracking-wider text-white">
                   Most Popular
                 </div>
               )}
@@ -113,7 +113,7 @@ export default function Pricing() {
               <button
                 className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 ${
                   tier.popular
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-blue-500/25"
+                    ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-lg shadow-sky-500/25"
                     : "bg-gray-50 hover:bg-gray-100 text-gray-900 border border-gray-200"
                 }`}
               >

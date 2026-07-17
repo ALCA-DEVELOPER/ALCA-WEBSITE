@@ -39,7 +39,7 @@ export default function Hero() {
           className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 max-w-4xl leading-tight"
         >
           Elevate Your Digital Presence with{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
             Clealabs
           </span>
         </motion.h1>
@@ -61,7 +61,7 @@ export default function Hero() {
         >
           <Link
             href="#pricing"
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-full shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-300 flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold rounded-full shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-300 flex items-center justify-center gap-2 group"
           >
             Lihat Paket Harga
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

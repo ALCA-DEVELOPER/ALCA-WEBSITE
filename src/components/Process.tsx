@@ -38,10 +38,10 @@ const processes = [
 
 export default function Process() {
   return (
-    <section className="py-24 relative z-10 bg-gray-50 overflow-hidden">
+    <section className="py-24 relative z-10 bg-transparent overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-16">
@@ -52,7 +52,7 @@ export default function Process() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            How We <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Work</span>
+            How We <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">Work</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,13 +73,13 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white border border-gray-100 hover:border-purple-500/30 hover:shadow-md shadow-sm transition-all duration-300 group"
+              className="relative z-10 flex flex-col p-8 rounded-3xl bg-white border border-gray-100 hover:border-sky-500/30 hover:shadow-md shadow-sm transition-all duration-300 group"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <process.icon className="w-6 h-6 text-blue-400 group-hover:text-purple-400 transition-colors" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/10 to-blue-500/10 border border-sky-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <process.icon className="w-6 h-6 text-sky-400 group-hover:text-blue-500 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-sky-500 group-hover:to-blue-600 transition-all duration-300">
                   {process.title}
                 </h3>
               </div>
@@ -87,7 +87,7 @@ export default function Process() {
               <ul className="space-y-3">
                 {process.points.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 mt-1.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500/50 mt-1.5 shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}

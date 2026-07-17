@@ -41,7 +41,7 @@ export default function FAQ() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Frequently Asked <span className="text-blue-500">Questions</span>
+            Frequently Asked <span className="text-sky-500">Questions</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

@@ -10,7 +10,7 @@ const features = [
     description: "Built with modern, maintainable, and scalable code architectures ensuring long-term stability.",
   },
   {
-    icon: <Zap className="w-8 h-8 text-purple-400" />,
+    icon: <Zap className="w-8 h-8 text-sky-400" />,
     title: "Blazing Fast Performance",
     description: "Optimized for speed. We ensure your website loads instantly to keep your users engaged.",
   },
@@ -38,7 +38,7 @@ export default function Features() {
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Why Choose <span className="text-blue-500">Us</span>
+            Why Choose <span className="text-sky-500">Us</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

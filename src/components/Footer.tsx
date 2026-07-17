@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 pt-16 pb-8 relative z-10">
+    <footer className="bg-transparent border-t border-gray-200 pt-16 pb-8 relative z-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
@@ -15,7 +15,7 @@ export default function Footer() {
               <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
               <div className="text-2xl font-bold tracking-tighter flex items-center">
                 <span className="text-gray-900">Clea</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
                   labs
                 </span>
               </div>
