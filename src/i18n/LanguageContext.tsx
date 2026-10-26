@@ -14,19 +14,19 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const savedLang = localStorage.getItem("language") as Language;
-      if (savedLang === "id" || savedLang === "en") {
-        return savedLang;
-      }
-    }
-    return "id";
-  });
-
+  const [language, setLanguageState] = useState<Language>("id");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    try {
+      const savedLang = localStorage.getItem("language") as Language;
+      if (savedLang === "id" || savedLang === "en") {
+        setLanguageState(savedLang);
+      }
+    } catch {
+      // Ignore storage access issues
+    }
+
     // Snappy initial loading timer (1.3s)
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -36,14 +36,20 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLanguage = (lang: Language) => {
     // Scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     
     // Show loading
     setIsLoading(true);
 
     setTimeout(() => {
       setLanguageState(lang);
-      localStorage.setItem("language", lang);
+      try {
+        localStorage.setItem("language", lang);
+      } catch {
+        // Ignore storage access issues
+      }
       
       setTimeout(() => {
         setIsLoading(false);

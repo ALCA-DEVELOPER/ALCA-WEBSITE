@@ -144,7 +144,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto transform-gpu"
         >
           <MagneticButton
-            href="#pricing"
+            href="#services"
             className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-full shadow-[0_0_35px_-5px_rgba(59,130,246,0.65)] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
           >
             <span>{t("hero_btn_pricing")}</span>

@@ -15,7 +15,7 @@ export default function Navbar() {
   const navLinks = [
     { name: t("nav_why_us"), href: "#features" },
     { name: t("nav_process"), href: "#process" },
-    { name: t("nav_services"), href: "#pricing" },
+    { name: t("nav_services"), href: "#services" },
     { name: t("nav_portfolio"), href: "#portfolio" },
     { name: t("nav_faq"), href: "#faq" },
   ];
@@ -102,7 +102,7 @@ export default function Navbar() {
                 {language === "id" ? "ID" : "EN"}
               </button>
               <Link
-                href="#pricing"
+                href="#services"
                 className={`text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center active:scale-[0.98] ${
                   isScrolled
                     ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 py-2"
@@ -166,7 +166,7 @@ export default function Navbar() {
                     {language === "id" ? "ID" : "EN"}
                   </button>
                   <Link
-                    href="#pricing"
+                    href="#services"
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex-grow py-4 text-center text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-2xl shadow-[0_0_20px_-5px_rgba(14,165,233,0.5)] active:scale-[0.98] transition-transform duration-200"
                   >

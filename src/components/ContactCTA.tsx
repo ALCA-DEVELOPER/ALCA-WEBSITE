@@ -7,7 +7,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 export default function ContactCTA() {
   const { t } = useLanguage();
 
-  const waUrl = `https://wa.me/6281325216590?text=${encodeURIComponent(
+  const waUrl = `https://wa.me/6285700654110?text=${encodeURIComponent(
     "Halo Nama Perusahaan, saya ingin konsultasi mengenai pembuatan website untuk bisnis saya."
   )}`;
 

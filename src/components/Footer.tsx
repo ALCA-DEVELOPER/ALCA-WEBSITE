@@ -45,7 +45,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-600">
               <li><Link href="#features" className="hover:text-blue-600 transition-colors">{t("foot_comp_1")}</Link></li>
               <li><Link href="#portfolio" className="hover:text-blue-600 transition-colors">{t("foot_comp_2")}</Link></li>
-              <li><Link href="#pricing" className="hover:text-blue-600 transition-colors">{t("foot_comp_3")}</Link></li>
+              <li><Link href="#services" className="hover:text-blue-600 transition-colors">{t("foot_comp_3")}</Link></li>
               <li><Link href="#faq" className="hover:text-blue-600 transition-colors">{t("foot_comp_4")}</Link></li>
             </ul>
           </div>
@@ -54,7 +54,7 @@ export default function Footer() {
             <h4 className="text-gray-900 font-semibold mb-4">{t("foot_contact")}</h4>
             <ul className="space-y-3 text-sm text-gray-600">
               <li><a href="mailto:kontak@namaperusahaan.com" className="hover:text-blue-600 transition-colors">kontak@namaperusahaan.com</a></li>
-              <li><a href="https://wa.me/6281325216590" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">6281325216590</a></li>
+              <li><a href="https://wa.me/6285700654110" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">085700654110</a></li>
               <li>Purbalingga, Jawa Tengah, Indonesia</li>
             </ul>
           </div>

@@ -26,7 +26,7 @@ export default function FloatingActions() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const waUrl = `https://wa.me/6281325216590?text=${encodeURIComponent(
+  const waUrl = `https://wa.me/6285700654110?text=${encodeURIComponent(
     "Halo Nama Perusahaan, saya ingin bertanya dan konsultasi mengenai pembuatan website."
   )}`;
 
