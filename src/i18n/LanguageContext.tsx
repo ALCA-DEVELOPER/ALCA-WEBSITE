@@ -14,20 +14,23 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("id");
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("language") as Language;
+      if (savedLang === "id" || savedLang === "en") {
+        return savedLang;
+      }
+    }
+    return "id";
+  });
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // On mount, check if there's a saved language
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && (savedLang === "id" || savedLang === "en")) {
-      setLanguageState(savedLang);
-    }
-    
-    // Initial loading timer
+    // Snappy initial loading timer (1.3s)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,20 +41,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     // Show loading
     setIsLoading(true);
 
-    // After a slight delay to allow smooth scrolling and preloader to appear
     setTimeout(() => {
       setLanguageState(lang);
       localStorage.setItem("language", lang);
       
-      // Hide loading after a bit
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500);
-    }, 500);
+      }, 700);
+    }, 300);
   };
 
   const t = (key: DictionaryKey): string => {
-    return dictionaries[language][key] || dictionaries["en"][key] || key;
+    return dictionaries[language]?.[key] || dictionaries["en"]?.[key] || key;
   };
 
   return (

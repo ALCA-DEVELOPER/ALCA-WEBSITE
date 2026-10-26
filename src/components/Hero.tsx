@@ -1,82 +1,162 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+// Magnetic Button with spring physics for that smooth "Awwwards" feel
+function MagneticButton({
+  children,
+  className,
+  href,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  href: string;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springConfig = { damping: 15, stiffness: 160, mass: 0.1 };
+  const smoothX = useSpring(x, springConfig);
+  const smoothY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!ref.current) return;
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    x.set((clientX - centerX) * 0.25);
+    y.set((clientY - centerY) * 0.25);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      style={{ x: smoothX, y: smoothY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+    >
+      {children}
+    </motion.a>
+  );
+}
+
 export default function Hero() {
   const { t } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Pause video decoding when hero is off-screen to save GPU/CPU cycles
+  useEffect(() => {
+    const video = videoRef.current;
+    const hero = heroRef.current;
+    if (!video || !hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center pt-28 pb-10 lg:pt-0 lg:pb-0 overflow-hidden">
+    <section
+      ref={heroRef}
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-0 lg:pb-0 overflow-hidden"
+    >
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-20"
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover -z-20 transform-gpu"
       >
         <source src="/background.webm" type="video/webm" />
       </video>
-      
+
       {/* Dark Vignette Overlay for edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.7)_120%)] -z-10 pointer-events-none" />
-      
-      {/* Smooth transition to the next section (gray-50) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.72)_120%)] -z-10 pointer-events-none" />
+
+      {/* Smooth transition to the next section */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-gray-50 to-transparent z-0 pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
+        {/* Single Badge: Agensi Web Modern */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6 md:mb-8 backdrop-blur-sm shadow-sm"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-sm mb-6 md:mb-8 transform-gpu"
         >
-          <Sparkles className="w-4 h-4 text-blue-500" />
-          <span className="text-sm font-medium text-white">{t("hero_badge")}</span>
+          <Sparkles className="w-4 h-4 text-sky-400" />
+          <span className="text-sm font-semibold text-white tracking-wide">{t("hero_badge")}</span>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-8 max-w-4xl leading-tight text-white"
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-5 md:mb-8 max-w-4xl leading-[1.15] text-white transform-gpu"
         >
           {t("hero_title_prefix")}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
-            Clealabs
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500 ml-2">
+            Nama Perusahaan
           </span>
         </motion.h1>
 
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-xl text-gray-200 mb-8 md:mb-12 max-w-2xl leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-base md:text-xl text-gray-200 mb-8 md:mb-12 max-w-2xl leading-relaxed transform-gpu"
         >
           {t("hero_description")}
         </motion.p>
 
+        {/* Magnetic CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto"
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto transform-gpu"
         >
-          <Link
+          <MagneticButton
             href="#pricing"
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold rounded-full shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-300 flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-full shadow-[0_0_35px_-5px_rgba(59,130,246,0.65)] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
           >
-            {t("hero_btn_pricing")}
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
+            <span>{t("hero_btn_pricing")}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-200" />
+          </MagneticButton>
+
+          <MagneticButton
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
+            className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 transition-all duration-300 flex items-center justify-center backdrop-blur-md cursor-pointer active:scale-[0.98]"
           >
-            {t("hero_btn_consult")}
-          </Link>
+            <span>{t("hero_btn_consult")}</span>
+          </MagneticButton>
         </motion.div>
       </div>
     </section>

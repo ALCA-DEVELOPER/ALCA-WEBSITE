@@ -16,11 +16,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <Image src="/logo.png" alt="Clealabs Logo" width={32} height={32} className="w-8 h-8 object-contain" />
+              <Image src="/logo.png" alt="Nama Perusahaan Logo" width={32} height={32} className="w-8 h-8 object-contain" />
               <div className="text-2xl font-bold tracking-tighter flex items-center">
-                <span className="text-gray-900">Clea</span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
-                  labs
+                <span className="text-gray-900">Nama</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500 ml-1.5">
+                  Perusahaan
                 </span>
               </div>
             </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 font-semibold mb-4">{t("foot_contact")}</h4>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><a href="mailto:clealabss@gmail.com" className="hover:text-blue-600 transition-colors">clealabss@gmail.com</a></li>
+              <li><a href="mailto:kontak@namaperusahaan.com" className="hover:text-blue-600 transition-colors">kontak@namaperusahaan.com</a></li>
               <li><a href="https://wa.me/6281325216590" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">6281325216590</a></li>
               <li>Purbalingga, Jawa Tengah, Indonesia</li>
             </ul>
@@ -62,7 +62,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} Clealabs. {t("foot_rights")}
+            &copy; {currentYear} Nama Perusahaan. {t("foot_rights")}
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link href="#" className="hover:text-blue-600 transition-colors">{t("foot_privacy")}</Link>

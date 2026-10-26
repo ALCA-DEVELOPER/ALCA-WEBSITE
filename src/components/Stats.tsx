@@ -1,37 +1,44 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Users, Briefcase, Star, Trophy } from "lucide-react";
+import { Users, Briefcase, Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 function Counter({ from, to, suffix = "" }: { from: number; to: number; suffix?: string }) {
-  const [count, setCount] = useState(from);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px" });
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
 
   useEffect(() => {
-    if (isInView) {
-      let startTimestamp: number | null = null;
-      const duration = 2500;
-      
-      const step = (timestamp: number) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        // easeOutQuart
-        const easeOut = 1 - Math.pow(1 - progress, 4);
-        setCount(Math.floor(easeOut * (to - from) + from));
-        
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      
-      window.requestAnimationFrame(step);
-    }
-  }, [isInView, from, to]);
+    if (!isInView || !ref.current) return;
 
-  return <span ref={ref}>{count}{suffix}</span>;
+    let startTimestamp: number | null = null;
+    const duration = 1800; // snappier animation
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // easeOutQuart
+      const easeOut = 1 - Math.pow(1 - progress, 4);
+      const currentVal = Math.floor(easeOut * (to - from) + from);
+
+      if (ref.current) {
+        ref.current.textContent = `${currentVal}${suffix}`;
+      }
+
+      if (progress < 1) {
+        animationFrameId = window.requestAnimationFrame(step);
+      } else if (ref.current) {
+        ref.current.textContent = `${to}${suffix}`;
+      }
+    };
+
+    animationFrameId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [isInView, from, to, suffix]);
+
+  return <span ref={ref}>{from}{suffix}</span>;
 }
 
 export default function Stats() {
@@ -65,11 +72,11 @@ export default function Stats() {
           {statsData.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col items-center"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center transform-gpu"
             >
               <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center mb-3 md:mb-6 text-sky-500 mx-auto">
                 <div className="scale-75 md:scale-100">{stat.icon}</div>
@@ -77,7 +84,9 @@ export default function Stats() {
               <h4 className="text-2xl md:text-5xl font-extrabold text-gray-900 mb-1 md:mb-2 tracking-tight">
                 <Counter from={0} to={stat.value} suffix={stat.suffix} />
               </h4>
-              <p className="text-xs md:text-base text-gray-600 font-medium leading-tight">{stat.label}</p>
+              <p className="text-xs md:text-base text-gray-600 font-medium leading-tight">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </div>

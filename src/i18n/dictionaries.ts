@@ -11,10 +11,19 @@ export const dictionaries = {
 
     // Hero
     hero_badge: "Agensi Web Modern",
+    hero_status: "Tersedia untuk Project Baru",
     hero_title_prefix: "Tingkatkan Kehadiran Digital Anda bersama ",
     hero_description: "Kami membangun website yang cepat, dapat diskalakan, dan memukau untuk bisnis maupun individu. Wujudkan visi Anda menjadi nyata dengan solusi digital premium kami.",
     hero_btn_pricing: "Lihat Paket Harga",
     hero_btn_consult: "Konsultasi Gratis",
+    hero_stat_speed: "Skor Kecepatan 99+",
+    hero_stat_seo: "100% SEO Friendly",
+    hero_stat_responsive: "Pixel-Perfect Multi-Device",
+
+    // Tech Stack
+    tech_badge: "Teknologi Terdepan",
+    tech_title: "Ditenagai oleh Stack Modern",
+    tech_subtitle: "Framework dan teknologi mutakhir berstandar global untuk kecepatan, stabilitas, dan skalabilitas maksimal.",
 
     // Stats
     stat_projects: "Project Selesai",
@@ -25,15 +34,22 @@ export const dictionaries = {
     // Features
     feat_title: "Kenapa Memilih",
     feat_title_highlight: "Kami",
-    feat_subtitle: "Kami tidak sekadar membuat website; kami merancang pengalaman digital yang memberikan hasil.",
+    feat_subtitle: "Kami tidak sekadar membuat website; kami merancang pengalaman digital yang memberikan hasil nyata bagi bisnis Anda.",
     feat_1_title: "Kode yang Bersih",
     feat_1_desc: "Dibangun dengan arsitektur kode yang modern, mudah dipelihara, dan dapat diskalakan untuk stabilitas jangka panjang.",
     feat_2_title: "Performa Sangat Cepat",
-    feat_2_desc: "Dioptimalkan untuk kecepatan. Kami memastikan website Anda dimuat seketika untuk menjaga interaksi pengguna.",
+    feat_2_desc: "Dioptimalkan untuk kecepatan dan Core Web Vitals. Website Anda dimuat instan untuk menjaga retensi pengguna.",
     feat_3_title: "UI Pixel-Perfect",
     feat_3_desc: "Desain memukau dan responsif yang terlihat sempurna di semua perangkat dan ukuran layar.",
     feat_4_title: "Dukungan 24/7",
-    feat_4_desc: "Bantuan khusus kapan pun Anda membutuhkannya. Kami hadir untuk membantu bisnis Anda berkembang.",
+    feat_4_desc: "Bantuan khusus kapan pun Anda membutuhkannya. Kami hadir untuk membantu bisnis Anda berkembang tanpa kendala teknis.",
+    feat_lighthouse_perf: "Performa",
+    feat_lighthouse_seo: "SEO",
+    feat_lighthouse_access: "Aksesibilitas",
+    feat_lighthouse_best: "Praktik Terbaik",
+    feat_code_tag: "Clean Architecture",
+    feat_device_tag: "Responsif Sempurna",
+    feat_support_tag: "Respon Rata-rata < 15 Menit",
 
     // Process
     proc_title: "Cara Kami",
@@ -68,6 +84,11 @@ export const dictionaries = {
     port_title: "Hasil",
     port_title_highlight: "Kerja",
     port_subtitle: "Sekilas tentang pengalaman digital yang kami rancang untuk klien kami.",
+    port_filter_all: "Semua",
+    port_filter_landing: "Landing Page",
+    port_filter_company: "Company Profile",
+    port_filter_webapp: "Web App & SaaS",
+    port_btn_visit: "Kunjungi Website",
 
     // Pricing
     price_title: "Harga",
@@ -75,13 +96,14 @@ export const dictionaries = {
     price_subtitle: "Pilih paket yang sempurna untuk kebutuhan digital Anda. Tanpa biaya tersembunyi, hanya nilai terbaik.",
     price_most_popular: "Paling Populer",
     price_btn: "Pilih Paket Ini",
+    price_guarantee: "Garansi revisi & dukungan teknis pasca rilis.",
     
     price_tier_1_name: "Starter Landing Page",
     price_tier_1_target: "Portofolio personal, promosi acara, atau showcase satu produk.",
     price_tier_1_f1: "Desain satu halaman (Single page)",
     price_tier_1_f2: "Layout responsif",
     price_tier_1_f3: "Pengaturan SEO dasar",
-    price_tier_1_f4: "Integrasi formulir kontak",
+    price_tier_1_f4: "Integrasi formulir kontak & WhatsApp",
     price_tier_1_f5: "Pengerjaan 3 hari",
     
     price_tier_2_name: "Professional Company Profile",
@@ -98,7 +120,13 @@ export const dictionaries = {
     price_tier_3_f2: "Integrasi gateway pembayaran",
     price_tier_3_f3: "Autentikasi pengguna",
     price_tier_3_f4: "Dashboard Admin (pelacakan penjualan/stok)",
-    price_tier_3_f5: "Dukungan premium",
+    price_tier_3_f5: "Dukungan premium & integrasi API",
+
+    // Testimonials
+    testi_badge: "Testimoni Klien",
+    testi_title: "Dipercaya oleh Para",
+    testi_title_highlight: "Pebisnis & Kreator",
+    testi_subtitle: "Kepuasan klien adalah prioritas utama kami. Inilah bukti nyata hasil kolaborasi bersama kami.",
 
     // FAQ
     faq_title: "Pertanyaan yang Sering",
@@ -112,6 +140,17 @@ export const dictionaries = {
     faq_a3: "Ya, untuk paket Professional dan E-Commerce, kami memberikan gratis domain (.com) dan hosting untuk tahun pertama. Untuk paket Starter, kami dapat membantu menyiapkannya dengan biaya terpisah.",
     faq_q4: "Bisakah saya meminta desain khusus (custom)?",
     faq_a4: "Tentu saja! Semua paket kami (kecuali Starter dasar) mencakup desain UI/UX kustom. Kami akan mendesain website yang benar-benar merepresentasikan identitas brand Anda.",
+
+    // Contact CTA
+    contact_badge: "Mulai Kolaborasi",
+    contact_title: "Siap Mewujudkan Website",
+    contact_title_highlight: "Impian Anda?",
+    contact_subtitle: "Diskusikan kebutuhan proyek Anda bersama tim ahli kami. Kami berikan konsultasi gratis, estimasi waktu, dan solusi terbaik untuk bisnis Anda.",
+    contact_btn_wa: "Konsultasi via WhatsApp",
+    contact_btn_email: "Kirim Email Sekarang",
+    contact_stat_1: "Respon Kilat < 15 Menit",
+    contact_stat_2: "Konsultasi 100% Gratis",
+    contact_stat_3: "Garansi Selesai Tepat Waktu",
 
     // Footer
     foot_desc: "Kami membangun website yang cepat, dapat diskalakan, dan memukau yang membantu bisnis Anda menonjol di dunia digital.",
@@ -142,10 +181,19 @@ export const dictionaries = {
 
     // Hero
     hero_badge: "Modern Web Development Agency",
+    hero_status: "Available for New Projects",
     hero_title_prefix: "Elevate Your Digital Presence with ",
     hero_description: "We build fast, scalable, and stunning websites for businesses and individuals. Turn your vision into reality with our premium digital solutions.",
     hero_btn_pricing: "View Pricing",
     hero_btn_consult: "Free Consultation",
+    hero_stat_speed: "99+ PageSpeed Score",
+    hero_stat_seo: "100% SEO Ready",
+    hero_stat_responsive: "Pixel-Perfect Multi-Device",
+
+    // Tech Stack
+    tech_badge: "Cutting-Edge Tech",
+    tech_title: "Powered by Modern Tech Stack",
+    tech_subtitle: "Industry-standard frameworks and tools crafted for extreme speed, rock-solid security, and effortless scalability.",
 
     // Stats
     stat_projects: "Projects Completed",
@@ -156,15 +204,22 @@ export const dictionaries = {
     // Features
     feat_title: "Why Choose",
     feat_title_highlight: "Us",
-    feat_subtitle: "We don't just build websites; we craft digital experiences that drive results.",
+    feat_subtitle: "We don't just build websites; we craft digital experiences that drive genuine growth and engagement.",
     feat_1_title: "Clean Code",
     feat_1_desc: "Built with modern, maintainable, and scalable code architectures ensuring long-term stability.",
     feat_2_title: "Blazing Fast Performance",
-    feat_2_desc: "Optimized for speed. We ensure your website loads instantly to keep your users engaged.",
+    feat_2_desc: "Optimized for speed and Core Web Vitals. We ensure your website loads instantly to keep your users engaged.",
     feat_3_title: "Pixel-Perfect UI",
     feat_3_desc: "Stunning, responsive designs that look flawless on any device and screen size.",
     feat_4_title: "24/7 Support",
-    feat_4_desc: "Dedicated assistance whenever you need it. We're here to help your business grow.",
+    feat_4_desc: "Dedicated assistance whenever you need it. We're here to help your business grow smoothly.",
+    feat_lighthouse_perf: "Performance",
+    feat_lighthouse_seo: "SEO",
+    feat_lighthouse_access: "Accessibility",
+    feat_lighthouse_best: "Best Practices",
+    feat_code_tag: "Clean Architecture",
+    feat_device_tag: "Flawlessly Responsive",
+    feat_support_tag: "Avg Response Time < 15 Mins",
 
     // Process
     proc_title: "How We",
@@ -199,6 +254,11 @@ export const dictionaries = {
     port_title: "Our",
     port_title_highlight: "Work",
     port_subtitle: "A glimpse into the digital experiences we've crafted for our clients.",
+    port_filter_all: "All",
+    port_filter_landing: "Landing Page",
+    port_filter_company: "Company Profile",
+    port_filter_webapp: "Web App & SaaS",
+    port_btn_visit: "Visit Live Site",
 
     // Pricing
     price_title: "Simple, Transparent",
@@ -206,13 +266,14 @@ export const dictionaries = {
     price_subtitle: "Choose the perfect plan for your digital needs. No hidden fees, just great value.",
     price_most_popular: "Most Popular",
     price_btn: "Choose This Plan",
+    price_guarantee: "Revision guarantee & post-launch technical support.",
 
     price_tier_1_name: "Starter Landing Page",
     price_tier_1_target: "Personal portfolio, event promotion, or single-product showcase.",
     price_tier_1_f1: "Single page design",
     price_tier_1_f2: "Responsive layout",
     price_tier_1_f3: "Basic SEO setup",
-    price_tier_1_f4: "Contact form integration",
+    price_tier_1_f4: "Contact form & WhatsApp integration",
     price_tier_1_f5: "3 days delivery",
     
     price_tier_2_name: "Professional Company Profile",
@@ -229,7 +290,13 @@ export const dictionaries = {
     price_tier_3_f2: "Payment gateway integration",
     price_tier_3_f3: "User authentication",
     price_tier_3_f4: "Admin dashboard (sales/stock tracking)",
-    price_tier_3_f5: "Premium support",
+    price_tier_3_f5: "Premium support & API integrations",
+
+    // Testimonials
+    testi_badge: "Testimonials",
+    testi_title: "Trusted by Modern",
+    testi_title_highlight: "Businesses & Creators",
+    testi_subtitle: "Client satisfaction is our top priority. Here is what they have to say about working with us.",
 
     // FAQ
     faq_title: "Frequently Asked",
@@ -243,6 +310,17 @@ export const dictionaries = {
     faq_a3: "Yes, for Professional and E-Commerce packages, we include a free domain (.com) and hosting for the first year. For the Starter package, we can help set it up for a separate fee.",
     faq_q4: "Can I request a custom design?",
     faq_a4: "Absolutely! All our packages (except the basic Starter) include custom UI/UX design. We will design a website that truly represents your brand identity.",
+
+    // Contact CTA
+    contact_badge: "Start Collaboration",
+    contact_title: "Ready to Build Your",
+    contact_title_highlight: "Dream Website?",
+    contact_subtitle: "Discuss your project goals with our experts. Get a free consultation, accurate timeline estimate, and custom proposal for your business.",
+    contact_btn_wa: "Consult on WhatsApp",
+    contact_btn_email: "Send Us an Email",
+    contact_stat_1: "Fast Response < 15 Mins",
+    contact_stat_2: "100% Free Consultation",
+    contact_stat_3: "Guaranteed On-Time Delivery",
 
     // Footer
     foot_desc: "We build fast, scalable, and stunning websites that help your business stand out in the digital world.",

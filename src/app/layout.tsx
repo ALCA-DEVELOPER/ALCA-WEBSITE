@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Clealabs | Elevate Your Digital Presence",
+  title: "Nama Perusahaan | Elevate Your Digital Presence",
   description: "We build fast, scalable, and stunning websites for businesses and individuals.",
 };
 
