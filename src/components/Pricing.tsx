@@ -24,11 +24,7 @@ export default function Pricing() {
       badge: t("solution_1_badge"),
       desc: t("solution_1_desc"),
       icon: Globe,
-      color: "from-sky-500 to-blue-600",
-      iconBg: "bg-sky-50 text-sky-600 border-sky-100",
-      badgeColor: "bg-sky-50 text-sky-700 border-sky-200/80",
-      btnBg: "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-sky-500/20",
-      popular: false,
+      popular: true,
       features: [
         t("solution_1_f1"),
         t("solution_1_f2"),
@@ -46,10 +42,6 @@ export default function Pricing() {
       badge: t("solution_2_badge"),
       desc: t("solution_2_desc"),
       icon: TrendingUp,
-      color: "from-violet-500 to-purple-600",
-      iconBg: "bg-violet-50 text-violet-600 border-violet-100",
-      badgeColor: "bg-violet-50 text-violet-700 border-violet-200/80",
-      btnBg: "bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-400 hover:to-purple-500 text-white shadow-violet-500/20",
       popular: false,
       features: [
         t("solution_2_f1"),
@@ -68,11 +60,7 @@ export default function Pricing() {
       badge: t("solution_3_badge"),
       desc: t("solution_3_desc"),
       icon: Store,
-      color: "from-emerald-500 to-teal-600",
-      iconBg: "bg-emerald-50 text-emerald-600 border-emerald-100",
-      badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200/80",
-      btnBg: "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-emerald-500/25",
-      popular: true,
+      popular: false,
       features: [
         t("solution_3_f1"),
         t("solution_3_f2"),
@@ -90,10 +78,6 @@ export default function Pricing() {
       badge: t("solution_4_badge"),
       desc: t("solution_4_desc"),
       icon: LayoutDashboard,
-      color: "from-cyan-600 to-blue-700",
-      iconBg: "bg-cyan-50 text-cyan-600 border-cyan-100",
-      badgeColor: "bg-cyan-50 text-cyan-700 border-cyan-200/80",
-      btnBg: "bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 text-white shadow-cyan-500/20",
       popular: false,
       features: [
         t("solution_4_f1"),
@@ -172,27 +156,23 @@ export default function Pricing() {
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className={`group relative flex flex-col p-7 rounded-3xl border transition-[border-color,box-shadow] duration-300 transform-gpu bg-white ${
                   solution.popular
-                    ? "shadow-xl shadow-emerald-500/10 border-emerald-300 ring-1 ring-emerald-300/40 xl:-translate-y-2"
-                    : "border-gray-200/90 shadow-sm hover:border-gray-300 hover:shadow-lg"
+                    ? "shadow-xl shadow-sky-500/15 border-sky-400 ring-2 ring-sky-400/30 xl:-translate-y-2"
+                    : "border-gray-200/90 shadow-sm hover:border-sky-300 hover:shadow-lg"
                 }`}
               >
                 {/* Popular / Recommended Tag */}
                 {solution.popular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3.5 py-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full text-[11px] font-bold uppercase tracking-wider text-white shadow-md shadow-sky-500/30">
                     {t("price_popular_tag")}
                   </div>
                 )}
 
                 {/* Card Top: Icon & Badge */}
                 <div className="flex items-center justify-between mb-5">
-                  <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${solution.iconBg} shadow-sm group-hover:scale-105 transition-transform duration-200`}
-                  >
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center border bg-sky-50 text-sky-600 border-sky-100 shadow-sm group-hover:scale-105 group-hover:bg-sky-100 transition-all duration-200">
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <span
-                    className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${solution.badgeColor}`}
-                  >
+                  <span className="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-sky-50 text-sky-700 border-sky-200/70">
                     {solution.badge}
                   </span>
                 </div>
@@ -226,7 +206,7 @@ export default function Pricing() {
                   href={`https://wa.me/6285700654110?text=${solution.waMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-full py-3.5 mt-auto rounded-xl font-semibold text-xs md:text-sm text-center transition-all duration-200 flex items-center justify-center gap-2 shadow-md active:scale-[0.98] ${solution.btnBg}`}
+                  className="w-full py-3.5 mt-auto rounded-xl font-semibold text-xs md:text-sm text-center transition-all duration-200 flex items-center justify-center gap-2 shadow-md bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-sky-500/20 active:scale-[0.98]"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>{t("price_btn")}</span>
