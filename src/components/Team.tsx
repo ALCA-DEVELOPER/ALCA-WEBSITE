@@ -23,8 +23,7 @@ export default function Team() {
       name: t("team_member_1_name"), // "Fatih Al-Fakhri Muhammad"
       title: t("team_member_1_role"), // "Full Stack Developer"
       statusColor: "#10b981",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+      avatarUrl: "/fatih.png",
       skills: [
         "Next.js 16",
         "React 19",
@@ -42,8 +41,7 @@ export default function Team() {
       name: t("team_member_2_name"), // "Wahyuni Salsabila"
       title: t("team_member_2_role"), // "Full Stack Developer"
       statusColor: "#38bdf8",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=85",
+      avatarUrl: "/wahyuni.png",
       skills: [
         "Full Stack Dev",
         "Next.js",
