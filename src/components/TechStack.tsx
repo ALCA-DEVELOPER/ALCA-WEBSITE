@@ -1,6 +1,8 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useLanguage } from "@/i18n/LanguageContext";
+import type { LogoItem } from "@/components/LogoLoop/LogoLoop";
 import {
   SiNextdotjs,
   SiReact,
@@ -14,21 +16,90 @@ import {
   SiFigma,
   SiDocker,
   SiPython,
+  SiGithub,
+  SiGraphql,
 } from "react-icons/si";
 
-const techList = [
-  { name: "Next.js 16", icon: SiNextdotjs, color: "text-slate-900" },
-  { name: "React 19", icon: SiReact, color: "text-sky-500" },
-  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-  { name: "Tailwind CSS v4", icon: SiTailwindcss, color: "text-teal-500" },
-  { name: "Node.js", icon: SiNodedotjs, color: "text-emerald-600" },
-  { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-600" },
-  { name: "Supabase", icon: SiSupabase, color: "text-emerald-500" },
-  { name: "Vercel", icon: SiVercel, color: "text-slate-900" },
-  { name: "Framer Motion", icon: SiFramer, color: "text-purple-500" },
-  { name: "Figma", icon: SiFigma, color: "text-pink-500" },
-  { name: "Docker", icon: SiDocker, color: "text-sky-600" },
-  { name: "Python", icon: SiPython, color: "text-amber-500" },
+const LogoLoop = dynamic(() => import("@/components/LogoLoop/LogoLoop"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-16 flex items-center justify-center opacity-30 animate-pulse">
+      <div className="w-1/2 h-8 bg-slate-200 rounded-full" />
+    </div>
+  ),
+});
+
+const techLogos: LogoItem[] = [
+  {
+    node: <SiNextdotjs className="w-10 h-10 transition-colors" />,
+    title: "Next.js 16",
+    hoverColor: "#000000",
+  },
+  {
+    node: <SiReact className="w-10 h-10 transition-colors" />,
+    title: "React 19",
+    hoverColor: "#0ea5e9",
+  },
+  {
+    node: <SiTypescript className="w-10 h-10 transition-colors" />,
+    title: "TypeScript",
+    hoverColor: "#2563eb",
+  },
+  {
+    node: <SiTailwindcss className="w-10 h-10 transition-colors" />,
+    title: "Tailwind CSS v4",
+    hoverColor: "#06b6d4",
+  },
+  {
+    node: <SiNodedotjs className="w-10 h-10 transition-colors" />,
+    title: "Node.js",
+    hoverColor: "#22c55e",
+  },
+  {
+    node: <SiPostgresql className="w-10 h-10 transition-colors" />,
+    title: "PostgreSQL",
+    hoverColor: "#336791",
+  },
+  {
+    node: <SiSupabase className="w-10 h-10 transition-colors" />,
+    title: "Supabase",
+    hoverColor: "#3ecf8e",
+  },
+  {
+    node: <SiVercel className="w-10 h-10 transition-colors" />,
+    title: "Vercel",
+    hoverColor: "#000000",
+  },
+  {
+    node: <SiFramer className="w-10 h-10 transition-colors" />,
+    title: "Framer Motion",
+    hoverColor: "#a855f7",
+  },
+  {
+    node: <SiFigma className="w-10 h-10 transition-colors" />,
+    title: "Figma",
+    hoverColor: "#ec4899",
+  },
+  {
+    node: <SiDocker className="w-10 h-10 transition-colors" />,
+    title: "Docker",
+    hoverColor: "#0284c7",
+  },
+  {
+    node: <SiPython className="w-10 h-10 transition-colors" />,
+    title: "Python",
+    hoverColor: "#f59e0b",
+  },
+  {
+    node: <SiGithub className="w-10 h-10 transition-colors" />,
+    title: "GitHub",
+    hoverColor: "#181717",
+  },
+  {
+    node: <SiGraphql className="w-10 h-10 transition-colors" />,
+    title: "GraphQL",
+    hoverColor: "#e535ab",
+  },
 ];
 
 export default function TechStack() {
@@ -45,22 +116,22 @@ export default function TechStack() {
         </h3>
       </div>
 
-      {/* Ticker with gradient edge mask */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-        <div className="animate-marquee gap-6 py-2">
-          {/* Double array for seamless loop */}
-          {[...techList, ...techList].map((tech, idx) => (
-            <div
-              key={`${tech.name}-${idx}`}
-              className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gray-50/80 hover:bg-white border border-gray-200/80 hover:border-sky-300 shadow-xs hover:shadow-sm transition-[border-color,box-shadow,background-color] duration-200 shrink-0 cursor-default group"
-            >
-              <tech.icon className={`w-5 h-5 ${tech.color} group-hover:scale-110 transition-transform duration-200`} />
-              <span className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 whitespace-nowrap">
-                {tech.name}
-              </span>
-            </div>
-          ))}
-        </div>
+      {/* React Bits Logo Loop Component */}
+      <div className="w-full relative py-2">
+        <LogoLoop
+          logos={techLogos}
+          speed={55}
+          direction="left"
+          logoHeight={42}
+          gap={54}
+          pauseOnHover={true}
+          scaleOnHover={true}
+          fadeOut={true}
+          fadeOutWidth={0.16}
+          labels="hover"
+          draggable={true}
+          className="text-slate-600 cursor-grab"
+        />
       </div>
     </section>
   );

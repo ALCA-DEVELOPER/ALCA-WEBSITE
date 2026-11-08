@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
-  ExternalLink,
   Sparkles,
   Briefcase,
   Building2,
   CalendarCheck,
   LayoutDashboard,
 } from "lucide-react";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -23,16 +21,87 @@ const Folder = dynamic(() => import("@/components/Folder/Folder"), {
   ),
 });
 
-type ProjectCategory = "all" | "portfolio" | "company" | "event" | "webapp";
+const FlexCarousel = dynamic(
+  () => import("@/components/FlexCarousel/FlexCarousel"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[400px] sm:h-[460px] rounded-3xl bg-slate-50/70 border border-slate-100 flex items-center justify-center animate-pulse">
+        <div className="w-12 h-12 rounded-full bg-slate-200/80" />
+      </div>
+    ),
+  }
+);
 
 export default function Portfolio() {
-  const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<ProjectCategory>("all");
+  const { t, language } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Carousel showcase items featuring the live projects & visual highlights
+  const carouselItems = [
+    {
+      src: "/personal-branding.webp",
+      alt: "Al-Fakhri Portfolio Website",
+      title: "Al-Fakhri Portfolio",
+      subtitle: "Personal Branding & Creative Developer",
+    },
+    {
+      src: "/company-profile.webp",
+      alt: "Convivium Italian Restaurant Profile",
+      title: "Convivium Profile",
+      subtitle: "Authentic Italian Restaurant & Pastry",
+    },
+    {
+      src: "/marinne.webp",
+      alt: "Marine Intelligence System Dashboard",
+      title: "Marine Intelligence System",
+      subtitle: "Oceanographic Real-Time Analytics",
+    },
+    {
+      src: "/ecotani.webp",
+      alt: "Eco-Tani Smart Agriculture SaaS",
+      title: "Eco-Tani SaaS Platform",
+      subtitle: "Precision Agriculture & Cloud Monitoring",
+    },
+    {
+      src: "/company-profile.webp",
+      alt: "Corporate Identity Web Showcase",
+      title: "Bespoke Corporate Web",
+      subtitle: "High-Performance Mobile-First UI/UX",
+    },
+    {
+      src: "/personal-branding.webp",
+      alt: "Creative Developer Showcase",
+      title: "Creative Developer Studio",
+      subtitle: "Aesthetic Layouts & Fast Load Times",
+    },
+    {
+      src: "/marinne.webp",
+      alt: "Maritime Big Data Cloud Portal",
+      title: "Maritime Big Data Cloud",
+      subtitle: "Real-Time Telemetry & API Integration",
+    },
+    {
+      src: "/ecotani.webp",
+      alt: "Smart Cloud Agro Platform",
+      title: "Smart Cloud Agro Hub",
+      subtitle: "IoT Sensors & Scalable Analytics",
+    },
+  ];
 
   // 4 Dedicated Folders with categorized web projects
   const folderCategories = [
     {
-      id: "portfolio" as ProjectCategory,
+      id: "portfolio",
       name: t("port_folder_tab_portfolio"), // "Portofolio"
       label: t("port_folder_tab_portfolio"),
       color: "#0284c7", // Sky blue
@@ -63,10 +132,10 @@ export default function Portfolio() {
       ],
     },
     {
-      id: "company" as ProjectCategory,
+      id: "company",
       name: t("port_folder_tab_company"), // "Company Profil"
       label: t("port_folder_tab_company"),
-      color: "#2563eb", // Royal blue
+      color: "#0284c7", // Sky blue (same as portfolio)
       icon: Building2,
       badge: "Corporate & Business",
       items: [
@@ -94,10 +163,10 @@ export default function Portfolio() {
       ],
     },
     {
-      id: "event" as ProjectCategory,
+      id: "event",
       name: t("port_folder_tab_event"), // "Event"
       label: t("port_folder_tab_event"),
-      color: "#7c3aed", // Violet / Purple
+      color: "#0284c7", // Sky blue (same as portfolio)
       icon: CalendarCheck,
       badge: "Summit & Festival",
       items: [
@@ -125,10 +194,10 @@ export default function Portfolio() {
       ],
     },
     {
-      id: "webapp" as ProjectCategory,
+      id: "webapp",
       name: t("port_folder_tab_webapp"), // "Web Apps & SaaS"
       label: t("port_folder_tab_webapp"),
-      color: "#0d9488", // Teal
+      color: "#0284c7", // Sky blue (same as portfolio)
       icon: LayoutDashboard,
       badge: "Dashboard & SaaS",
       items: [
@@ -157,88 +226,11 @@ export default function Portfolio() {
     },
   ];
 
-  // Projects list for the bottom gallery grid
-  const allProjects = [
-    {
-      title: "Al-Fakhri Portfolio",
-      category: "portfolio" as ProjectCategory,
-      categoryLabel: "Portofolio",
-      stack: ["Personal Branding", "React", "Tailwind CSS"],
-      image: "/personal-branding.webp",
-      url: "https://al-fakhri.netlify.app",
-      color: "from-slate-800 to-slate-900",
-      isLive: true,
-    },
-    {
-      title: "Convivium",
-      category: "company" as ProjectCategory,
-      categoryLabel: "Company Profile",
-      stack: ["Company Profile", "Restaurant F&B", "UI/UX"],
-      image: "/company-profile.webp",
-      url: "https://convivium.netlify.app",
-      color: "from-stone-700 to-stone-800",
-      isLive: true,
-    },
-    {
-      title: "Marine Intelligence System",
-      category: "webapp" as ProjectCategory,
-      categoryLabel: "Web App & SaaS",
-      stack: ["Web App", "Dashboard", "Analytics"],
-      image: "/marinne.webp",
-      url: "https://kelautan.netlify.app",
-      color: "from-cyan-900 to-blue-900",
-      isLive: true,
-    },
-    {
-      title: "Eco-Tani SaaS",
-      category: "webapp" as ProjectCategory,
-      categoryLabel: "Web App & SaaS",
-      stack: ["SaaS Platform", "Green Tech", "Cloud"],
-      image: "/ecotani.webp",
-      url: "https://eco-tani.vercel.app",
-      color: "from-green-500 to-emerald-700",
-      isLive: true,
-    },
-    {
-      title: "Tech Summit Indonesia",
-      category: "event" as ProjectCategory,
-      categoryLabel: "Event Landing",
-      stack: ["Event Web", "Ticketing", "Schedule"],
-      image: "/ecotani.webp",
-      url: null,
-      color: "from-purple-800 to-indigo-950",
-      isLive: false,
-    },
-    {
-      title: "Nusantara Supply Chain",
-      category: "company" as ProjectCategory,
-      categoryLabel: "Company Profile",
-      stack: ["Logistics", "Fleet Monitoring", "Corporate"],
-      image: "/company-profile.webp",
-      url: null,
-      color: "from-blue-800 to-slate-900",
-      isLive: false,
-    },
-  ];
-
-  const filteredProjects =
-    activeTab === "all"
-      ? allProjects
-      : allProjects.filter((p) => p.category === activeTab);
-
-  const filterTabs: { id: ProjectCategory; label: string }[] = [
-    { id: "all", label: t("port_filter_all") },
-    { id: "portfolio", label: t("port_filter_portfolio") },
-    { id: "company", label: t("port_filter_company") },
-    { id: "event", label: t("port_filter_event") },
-    { id: "webapp", label: t("port_filter_webapp") },
-  ];
-
   return (
-    <section id="portfolio" className="py-24 relative z-10 bg-white">
-      <div className="container mx-auto px-6 md:px-12">
-        {/* Section Header */}
-        <div className="text-center mb-12">
+    <section id="portfolio" className="py-24 relative z-10 bg-white overflow-hidden">
+      {/* 1. Section Header (Centered) */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
+        <div className="text-center mb-10 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -270,13 +262,49 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg transform-gpu mb-12"
+            className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg transform-gpu mb-4"
           >
             {t("port_subtitle")}
           </motion.p>
+        </div>
+      </div>
 
-          {/* 4 Multi-Category React Bits Folders Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-14 text-left">
+      {/* 2. React Bits Flex Carousel (Full Width Edge-to-Edge across entire screen, no border/box) */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full h-[400px] sm:h-[470px] md:h-[520px] mb-16 md:mb-20 relative overflow-hidden"
+      >
+        <FlexCarousel
+          items={carouselItems}
+          preset="liquid"
+          fit="natural"
+          cardHeight={0.68}
+          radius={20}
+          gap={0.035}
+          autoplay={true}
+          interval={3500}
+          captions={true}
+          focusOnClick={true}
+          captureWheel={false}
+          className="w-full h-full"
+        />
+      </motion.div>
+
+      {/* 3. 4 Interactive 3D Folders (Centered in Container) */}
+      <div className="container mx-auto px-3.5 sm:px-6 md:px-12">
+        <div className="pt-2">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
+              {language === "id"
+                ? "Katalog Proyek Berdasarkan Kategori"
+                : "Project Folders by Category"}
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-7 text-left">
             {folderCategories.map((folder, fIndex) => {
               const IconComponent = folder.icon;
 
@@ -328,39 +356,35 @@ export default function Portfolio() {
                     delay: fIndex * 0.1,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className={`flex flex-col items-center bg-gray-50/80 border rounded-3xl p-5 transition-all duration-300 relative group ${
-                    activeTab === folder.id
-                      ? "border-sky-500 shadow-md ring-2 ring-sky-500/20 bg-sky-50/20"
-                      : "border-gray-200/80 hover:border-sky-300 hover:shadow-lg"
-                  }`}
+                  className="flex flex-col items-center bg-gray-50/80 border border-gray-200/80 hover:border-sky-300 hover:shadow-lg rounded-2xl sm:rounded-3xl p-3 sm:p-5 transition-all duration-300 relative group"
                 >
                   {/* Folder Card Header */}
-                  <div className="w-full flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
+                  <div className="w-full flex items-center justify-between mb-2 gap-1">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                       <div
-                        className="w-7 h-7 rounded-lg flex items-center justify-center text-white shadow-xs"
+                        className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center text-white shadow-xs shrink-0"
                         style={{ backgroundColor: folder.color }}
                       >
-                        <IconComponent className="w-4 h-4" />
+                        <IconComponent className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
-                      <span className="font-bold text-gray-900 text-sm tracking-tight">
+                      <span className="font-bold text-gray-900 text-xs sm:text-sm tracking-tight truncate">
                         {folder.name}
                       </span>
                     </div>
 
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white border border-gray-200 text-gray-600">
+                    <span className="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-white border border-gray-200 text-gray-600 shrink-0">
                       {folder.items.length} Web
                     </span>
                   </div>
 
                   {/* 3D Interactive Folder Component */}
-                  <div className="relative w-full min-h-[220px] flex items-center justify-center py-2">
+                  <div className="relative w-full min-h-[165px] sm:min-h-[220px] flex items-center justify-center py-1 sm:py-2">
                     <Folder
                       label={folder.label}
                       color={folder.color}
                       paperColor="#ffffff"
                       tabPosition="center"
-                      size={0.88}
+                      size={isMobile ? 0.65 : 0.88}
                       layout="spread"
                       openOn="click"
                       draggable={true}
@@ -373,128 +397,10 @@ export default function Portfolio() {
                       }}
                     />
                   </div>
-
-                  {/* Folder Hint / Action */}
-                  <button
-                    onClick={() => setActiveTab(folder.id)}
-                    className="w-full mt-2 pt-2.5 border-t border-gray-200/60 flex items-center justify-between text-[11px] text-gray-500 hover:text-sky-600 font-medium cursor-pointer transition-colors"
-                  >
-                    <span className="flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-sky-500" />
-                      <span>{t("port_folder_hint")}</span>
-                    </span>
-                    <span className="text-sky-600 font-semibold text-[10px]">
-                      Filter ↓
-                    </span>
-                  </button>
                 </motion.div>
               );
             })}
           </div>
-
-          {/* Category Filter Pills for Gallery Grid */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 mb-10">
-            {filterTabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                  activeTab === tab.id
-                    ? "bg-gray-900 text-white shadow-md shadow-black/10 scale-105"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200/80 hover:text-gray-900"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Project Grid Showcase */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.a
-                layout
-                href={project.url || "#"}
-                target={project.url ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                key={project.title}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative rounded-2xl overflow-hidden aspect-video bg-gray-50 border border-gray-200 shadow-sm hover:shadow-xl transition-[border-color,box-shadow] duration-300 flex flex-col cursor-pointer transform-gpu"
-              >
-                {/* Browser Chrome (Mac OS Style) */}
-                <div className="h-8 bg-gray-100 border-b border-gray-200 flex items-center px-3 gap-1.5 shrink-0 z-10 relative">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
-
-                  {/* URL Bar */}
-                  <div className="absolute left-1/2 -translate-x-1/2 h-5 bg-white border border-gray-200 rounded-md flex items-center px-3 min-w-[120px] max-w-[200px] overflow-hidden">
-                    <span className="text-[10px] text-gray-400 truncate w-full text-center font-medium">
-                      {project.url ? project.url.replace("https://", "") : "localhost:3000"}
-                    </span>
-                  </div>
-
-                  {/* Category Tag in header */}
-                  <span className="ml-auto text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
-                    {project.categoryLabel}
-                  </span>
-                </div>
-
-                {/* Browser Content */}
-                <div className="relative flex-1 bg-white overflow-hidden">
-                  {/* Fallback gradient background */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.color} ${
-                      project.url ? "opacity-90" : "opacity-30"
-                    } transition-opacity duration-300`}
-                  />
-
-                  {/* Next.js Image with lazy loading and GPU transform */}
-                  {project.image && (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 transform-gpu"
-                    />
-                  )}
-
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-gray-950/80 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center p-6 text-center z-20">
-                    <h3 className="text-2xl font-bold text-white mb-2 translate-y-3 group-hover:translate-y-0 transition-transform duration-200">
-                      {project.title}
-                    </h3>
-                    <div className="flex flex-wrap justify-center gap-2 mb-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-200 delay-75">
-                      {project.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white border border-white/20"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    {project.url ? (
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-900 font-semibold text-xs group-hover:bg-sky-50 transition-colors translate-y-3 group-hover:translate-y-0 duration-200 delay-100 shadow-lg">
-                        <span>{t("port_btn_visit")}</span>
-                        <ExternalLink size={14} />
-                      </div>
-                    ) : (
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white font-semibold text-xs backdrop-blur-sm border border-white/30">
-                        <span>{t("port_status_coming_soon")}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </AnimatePresence>
         </div>
       </div>
     </section>

@@ -5,10 +5,6 @@ import {
   Check,
   ShieldCheck,
   Sparkles,
-  Globe,
-  TrendingUp,
-  Store,
-  LayoutDashboard,
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
@@ -21,9 +17,7 @@ export default function Pricing() {
     {
       id: "company-profile",
       name: t("solution_1_name"),
-      badge: t("solution_1_badge"),
       desc: t("solution_1_desc"),
-      icon: Globe,
       popular: true,
       features: [
         t("solution_1_f1"),
@@ -39,9 +33,7 @@ export default function Pricing() {
     {
       id: "seo-optimizer",
       name: t("solution_2_name"),
-      badge: t("solution_2_badge"),
       desc: t("solution_2_desc"),
-      icon: TrendingUp,
       popular: false,
       features: [
         t("solution_2_f1"),
@@ -57,9 +49,7 @@ export default function Pricing() {
     {
       id: "pos-system",
       name: t("solution_3_name"),
-      badge: t("solution_3_badge"),
       desc: t("solution_3_desc"),
-      icon: Store,
       popular: false,
       features: [
         t("solution_3_f1"),
@@ -75,9 +65,7 @@ export default function Pricing() {
     {
       id: "dashboard-website",
       name: t("solution_4_name"),
-      badge: t("solution_4_badge"),
       desc: t("solution_4_desc"),
-      icon: LayoutDashboard,
       popular: false,
       features: [
         t("solution_4_f1"),
@@ -145,7 +133,6 @@ export default function Pricing() {
         {/* 4 Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
           {solutions.map((solution, index) => {
-            const IconComponent = solution.icon;
             return (
               <motion.div
                 key={solution.id}
@@ -167,18 +154,8 @@ export default function Pricing() {
                   </div>
                 )}
 
-                {/* Card Top: Icon & Badge */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center border bg-sky-50 text-sky-600 border-sky-100 shadow-sm group-hover:scale-105 group-hover:bg-sky-100 transition-all duration-200">
-                    <IconComponent className="w-6 h-6" />
-                  </div>
-                  <span className="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-sky-50 text-sky-700 border-sky-200/70">
-                    {solution.badge}
-                  </span>
-                </div>
-
                 {/* Title & Description */}
-                <div className="mb-6">
+                <div className="mb-6 pt-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-2.5 tracking-tight">
                     {solution.name}
                   </h3>
