@@ -130,7 +130,6 @@ export default function Hero() {
         poster="/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover -z-20 transform-gpu"
       >
-        <source src="/background.mp4" type="video/mp4" />
         <source src="/background.webm" type="video/webm" />
       </video>
 
