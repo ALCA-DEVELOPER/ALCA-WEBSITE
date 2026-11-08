@@ -56,16 +56,47 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
-  // Pause video decoding when hero is off-screen to save GPU/CPU cycles
+  // Handle video autoplay, strict Safari DOM properties, and viewport visibility
   useEffect(() => {
     const video = videoRef.current;
     const hero = heroRef.current;
-    if (!video || !hero) return;
+    if (!video) return;
+
+    // Strict Safari / iOS autoplay requirements:
+    // Safari requires DOM properties video.muted and video.defaultMuted to be true
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Handled gracefully if browser holds video until user interaction
+        });
+      }
+    };
+
+    playVideo();
+
+    // Fallback: If browser policy blocks autoplay before gesture, kick it off on first tap/scroll
+    const handleInteraction = () => {
+      playVideo();
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("scroll", handleInteraction);
+    };
+
+    window.addEventListener("touchstart", handleInteraction, { passive: true });
+    window.addEventListener("click", handleInteraction, { passive: true });
+    window.addEventListener("scroll", handleInteraction, { passive: true });
+
+    if (!hero) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {});
+          playVideo();
         } else {
           video.pause();
         }
@@ -74,13 +105,19 @@ export default function Hero() {
     );
 
     observer.observe(hero);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("scroll", handleInteraction);
+    };
   }, []);
 
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-0 lg:pb-0 overflow-hidden"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-0 lg:pb-0 overflow-hidden bg-slate-950 isolate"
     >
       {/* Video Background */}
       <video
@@ -90,8 +127,10 @@ export default function Hero() {
         muted
         playsInline
         preload="auto"
+        poster="/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover -z-20 transform-gpu"
       >
+        <source src="/background.mp4" type="video/mp4" />
         <source src="/background.webm" type="video/webm" />
       </video>
 

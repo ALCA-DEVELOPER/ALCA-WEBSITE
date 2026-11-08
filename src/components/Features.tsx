@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Zap, Code2, LayoutTemplate, Headset, CheckCircle2, ShieldCheck, Sparkles, Terminal } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import AnimatedContent from "@/components/AnimatedContent/AnimatedContent";
 
 export default function Features() {
   const { t } = useLanguage();
@@ -33,26 +34,32 @@ export default function Features() {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg transform-gpu"
+            className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed transform-gpu"
           >
             {t("feat_subtitle")}
           </motion.p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Bento Grid with React Bits AnimatedContent */}
+        <AnimatedContent
+          distance={40}
+          direction="vertical"
+          duration={0.8}
+          ease="power3.out"
+          scale={0.97}
+          blur={3}
+          stagger={0.12}
+          staggerFrom="start"
+          threshold={0.1}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        >
           {/* Bento Card 1: Speed & 100 Lighthouse (Col Span 2) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-white to-sky-50/40 border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-[box-shadow,border-color] duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu"
+          <div
+            className="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-white to-sky-50/40 border border-gray-100 shadow-sm hover:shadow-lg hover:border-sky-200 transition-all duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu hover:-translate-y-1"
           >
             <div className="relative z-10 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 text-amber-500">
@@ -82,16 +89,11 @@ export default function Features() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Bento Card 2: Clean Code (Col Span 1) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-1 p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-sm hover:shadow-md hover:border-slate-700 transition-[box-shadow,border-color] duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu"
+          <div
+            className="md:col-span-1 p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-sm hover:shadow-lg hover:border-slate-700 transition-all duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu hover:-translate-y-1"
           >
             <div className="relative z-10">
               <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-5 text-sky-400">
@@ -122,16 +124,11 @@ export default function Features() {
                 &#47;&#47; 100% scalable & modern
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Bento Card 3: Pixel-Perfect Multi-Device (Col Span 1) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-1 p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-[box-shadow,border-color] duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu"
+          <div
+            className="md:col-span-1 p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-200 transition-all duration-300 flex flex-col justify-between overflow-hidden relative group transform-gpu hover:-translate-y-1"
           >
             <div className="relative z-10">
               <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-5 text-sky-500">
@@ -154,16 +151,11 @@ export default function Features() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Bento Card 4: Support 24/7 & Guarantee (Col Span 2) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50/40 border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-[box-shadow,border-color] duration-300 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group transform-gpu"
+          <div
+            className="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-white to-blue-50/40 border border-gray-100 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden relative group transform-gpu hover:-translate-y-1"
           >
             <div className="relative z-10 max-w-md">
               <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 text-blue-500">
@@ -191,8 +183,8 @@ export default function Features() {
                 <span>{t("feat_support_tag")}</span>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </AnimatedContent>
       </div>
     </section>
   );
