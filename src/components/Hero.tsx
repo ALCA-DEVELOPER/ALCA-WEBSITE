@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import RotatingText from "@/components/RotatingText";
+import DecryptedText from "@/components/DecryptedText";
 
 // Magnetic Button with spring physics for that smooth "Awwwards" feel
 function MagneticButton({
@@ -52,7 +54,7 @@ function MagneticButton({
 }
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -140,15 +142,22 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-gray-50 to-transparent z-0 pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
-        {/* Single Badge: Agensi Web Modern */}
+        {/* Single Badge: Agensi Web Modern with DecryptedText */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-sm mb-6 md:mb-8 transform-gpu"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-clear mb-6 md:mb-7 transform-gpu cursor-default text-white"
         >
           <Sparkles className="w-4 h-4 text-sky-400" />
-          <span className="text-sm font-semibold text-white tracking-wide">{t("hero_badge")}</span>
+          <DecryptedText
+            text={t("hero_badge")}
+            animateOn="view"
+            speed={45}
+            maxIterations={10}
+            className="text-sm font-semibold text-white tracking-wide"
+            encryptedClassName="text-sm font-semibold text-sky-400 tracking-wide"
+          />
         </motion.div>
 
         {/* Headline */}
@@ -156,13 +165,53 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-5 md:mb-8 max-w-4xl leading-[1.15] text-white transform-gpu"
+          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 max-w-4xl leading-[1.15] text-white transform-gpu"
         >
           {t("hero_title_prefix")}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500 ml-2">
+          <span className="text-sky-400 font-extrabold ml-2">
             Nama Perusahaan
           </span>
         </motion.h1>
+
+        {/* React Bits RotatingText: Clean Crystal Glass Pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6 md:mb-8 text-xs sm:text-sm transform-gpu"
+        >
+          <span className="text-white/80 font-medium">
+            {language === "id" ? "Spesialis Solusi:" : "Core Expertise:"}
+          </span>
+          <RotatingText
+            texts={
+              language === "id"
+                ? [
+                    "Website Super Cepat & Ringan",
+                    "Desain Standar Awwwards UI/UX",
+                    "100% Core Web Vitals & SEO",
+                    "Web App & SaaS Skalabilitas Tinggi",
+                    "Dashboard & Point of Sale Modern",
+                  ]
+                : [
+                    "Ultra-Fast & Lightweight Web",
+                    "Awwwards-Grade UI/UX Design",
+                    "100% Core Web Vitals & SEO",
+                    "High-Scale Web Apps & SaaS",
+                    "Next-Gen Dashboard & POS",
+                  ]
+            }
+            mainClassName="px-3.5 py-1 glass-clear text-white font-semibold text-xs sm:text-sm rounded-full"
+            staggerFrom="last"
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-120%", opacity: 0 }}
+            staggerDuration={0.02}
+            splitLevelClassName="overflow-hidden"
+            transition={{ type: "spring", damping: 28, stiffness: 350 }}
+            rotationInterval={2600}
+          />
+        </motion.div>
 
         {/* Description */}
         <motion.p
@@ -183,7 +232,7 @@ export default function Hero() {
         >
           <MagneticButton
             href="#services"
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-full shadow-[0_0_35px_-5px_rgba(59,130,246,0.65)] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
+            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-full shadow-lg shadow-sky-500/25 transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
           >
             <span>{t("hero_btn_pricing")}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-200" />
@@ -191,7 +240,7 @@ export default function Hero() {
 
           <MagneticButton
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full border border-white/30 transition-all duration-300 flex items-center justify-center backdrop-blur-md cursor-pointer active:scale-[0.98]"
+            className="w-full sm:w-auto px-8 py-3.5 glass-clear text-white font-semibold rounded-full transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-[0.98]"
           >
             <span>{t("hero_btn_consult")}</span>
           </MagneticButton>

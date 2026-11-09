@@ -44,8 +44,8 @@ export default function Navbar() {
           mobileMenuOpen ? "rounded-3xl" : "rounded-full"
         } ${
           isScrolled || mobileMenuOpen
-            ? "bg-white/80 border border-white/60 backdrop-blur-md shadow-lg shadow-black/5"
-            : "bg-white/10 border border-white/20 backdrop-blur-md shadow-sm"
+            ? "glass-clear-scrolled text-gray-900"
+            : "glass-clear text-white"
         }`}
       >
         <div className="w-full flex flex-col">
@@ -74,7 +74,7 @@ export default function Navbar() {
                 <span className={isScrolled || mobileMenuOpen ? "text-gray-900" : "text-white"}>
                   Nama
                 </span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500 ml-1.5">
+                <span className="text-sky-400 ml-1.5 font-bold">
                   Perusahaan
                 </span>
               </div>
@@ -89,7 +89,7 @@ export default function Navbar() {
                   className={`text-[13px] lg:text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
                     isScrolled || mobileMenuOpen
                       ? "text-gray-600 hover:text-sky-600"
-                      : "text-gray-200 hover:text-white"
+                      : "text-white/80 hover:text-white"
                   }`}
                 >
                   {link.name}
@@ -100,10 +100,10 @@ export default function Navbar() {
                 <button
                   onClick={() => setLanguage(language === "id" ? "en" : "id")}
                   aria-label="Toggle language"
-                  className={`text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer shrink-0 ${
+                  className={`text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer shrink-0 ${
                     isScrolled || mobileMenuOpen
-                      ? "bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200/80"
-                      : "bg-white/15 text-white hover:bg-white/25 border border-white/20 backdrop-blur-sm"
+                      ? "bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200/80 shadow-2xs"
+                      : "bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-sm"
                   }`}
                 >
                   {language === "id" ? "ID" : "EN"}
@@ -111,10 +111,10 @@ export default function Navbar() {
 
                 <Link
                   href="#services"
-                  className={`text-xs lg:text-sm font-semibold text-white transition-all duration-300 rounded-full flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 ${
+                  className={`text-xs lg:text-sm font-semibold transition-all duration-200 rounded-full flex items-center justify-center active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 ${
                     isScrolled || mobileMenuOpen
-                      ? "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 px-4 lg:px-5 py-2 shadow-sm"
-                      : "bg-white/15 hover:bg-white/25 border border-white/25 px-4 lg:px-5 py-2 backdrop-blur-sm shadow-sm"
+                      ? "bg-sky-500 hover:bg-sky-400 text-white px-4 lg:px-5 py-2 shadow-sm"
+                      : "bg-white/15 hover:bg-white/25 border border-white/25 text-white px-4 lg:px-5 py-2 backdrop-blur-sm"
                   }`}
                 >
                   {t("nav_get_started")}
