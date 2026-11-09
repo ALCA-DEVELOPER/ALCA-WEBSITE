@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="min-h-screen font-sans antialiased overflow-x-hidden selection:bg-sky-500 selection:text-white" suppressHydrationWarning>
+      <body className="min-h-screen font-sans antialiased overflow-x-clip selection:bg-sky-500 selection:text-white" suppressHydrationWarning>
         <LanguageWrapper>{children}</LanguageWrapper>
       </body>
     </html>

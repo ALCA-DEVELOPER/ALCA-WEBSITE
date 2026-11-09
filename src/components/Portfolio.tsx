@@ -116,16 +116,16 @@ export default function Portfolio() {
           isUpcoming: false,
         },
         {
-          title: "Creative Showcase",
-          tag: "Art & Motion Design",
-          image: "/personal-branding.webp",
+          title: "",
+          tag: "",
+          image: null,
           url: null,
           isUpcoming: true,
         },
         {
-          title: "Developer Resume Web",
-          tag: "Interactive CV",
-          image: "/personal-branding.webp",
+          title: "",
+          tag: "",
+          image: null,
           url: null,
           isUpcoming: true,
         },
@@ -154,9 +154,9 @@ export default function Portfolio() {
           isUpcoming: false,
         },
         {
-          title: "Nusantara Logistics",
-          tag: "Supply Chain & Fleet",
-          image: "/company-profile.webp",
+          title: "",
+          tag: "",
+          image: null,
           url: null,
           isUpcoming: true,
         },
@@ -178,16 +178,16 @@ export default function Portfolio() {
           isUpcoming: false,
         },
         {
-          title: "SoundFest Concert Tour",
-          tag: "Live Music Expo",
-          image: "/data-salyer.webp",
+          title: "",
+          tag: "",
+          image: null,
           url: null,
           isUpcoming: true,
         },
         {
-          title: "National Hackathon Hub",
-          tag: "Competition Portal",
-          image: "/data-salyer.webp",
+          title: "",
+          tag: "",
+          image: null,
           url: null,
           isUpcoming: true,
         },
@@ -315,42 +315,58 @@ export default function Portfolio() {
             {folderCategories.map((folder, fIndex) => {
               const IconComponent = folder.icon;
 
-              const folderItems = folder.items.map((item) => ({
-                title: item.title,
-                description: item.tag,
-                content: (
-                  <div className="flex flex-col h-full w-full p-2.5 bg-white select-none">
-                    <div className="relative w-full h-[62%] rounded-md overflow-hidden bg-slate-100 mb-2 shadow-xs border border-gray-100">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        draggable={false}
-                        className="w-full h-full object-cover object-top pointer-events-none"
-                      />
-                      {item.isUpcoming && (
-                        <div className="absolute top-1 right-1 px-1.5 py-0.5 rounded-full bg-slate-900/80 text-white text-[8px] font-bold backdrop-blur-xs">
-                          {t("port_status_coming_soon")}
+              const folderItems = folder.items.map((item) => {
+                if (item.isUpcoming) {
+                  return {
+                    title: "",
+                    description: "",
+                    content: (
+                      <div className="flex flex-col items-center justify-center h-full w-full p-2.5 bg-slate-50/70 border border-dashed border-slate-200/90 rounded-md select-none text-center">
+                        <div className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-300 mb-1 shadow-2xs">
+                          <Sparkles className="w-3.5 h-3.5 text-slate-300" />
                         </div>
-                      )}
-                    </div>
-                    <div className="flex-1 flex flex-col justify-between overflow-hidden">
-                      <span className="font-bold text-[11px] text-gray-900 truncate leading-tight">
-                        {item.title}
-                      </span>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-semibold text-sky-600 uppercase tracking-wider truncate">
-                          {item.tag}
+                        <span className="text-[9px] font-bold text-slate-400 tracking-wider uppercase">
+                          {t("port_status_coming_soon")}
                         </span>
-                        {item.url && (
-                          <span className="text-[8px] font-bold text-emerald-600 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200/50">
-                            Live
-                          </span>
+                      </div>
+                    ),
+                  };
+                }
+
+                return {
+                  title: item.title,
+                  description: item.tag,
+                  content: (
+                    <div className="flex flex-col h-full w-full p-2.5 bg-white select-none">
+                      <div className="relative w-full h-[62%] rounded-md overflow-hidden bg-slate-100 mb-2 shadow-xs border border-gray-100">
+                        {item.image && (
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            draggable={false}
+                            className="w-full h-full object-cover object-top pointer-events-none"
+                          />
                         )}
                       </div>
+                      <div className="flex-1 flex flex-col justify-between overflow-hidden">
+                        <span className="font-bold text-[11px] text-gray-900 truncate leading-tight">
+                          {item.title}
+                        </span>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[9px] font-semibold text-sky-600 uppercase tracking-wider truncate">
+                            {item.tag}
+                          </span>
+                          {item.url && (
+                            <span className="text-[8px] font-bold text-emerald-600 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200/50">
+                              Live
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ),
-              }));
+                  ),
+                };
+              });
 
               return (
                 <motion.div
