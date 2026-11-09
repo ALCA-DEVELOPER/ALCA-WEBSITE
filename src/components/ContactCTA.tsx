@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Mail, Sparkles, Clock, ShieldCheck, Zap } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import SpotlightCard from "@/components/SpotlightCard";
-import DecryptedText from "@/components/DecryptedText";
 
 export default function ContactCTA() {
   const { t } = useLanguage();
@@ -21,31 +19,18 @@ export default function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative rounded-3xl md:rounded-[2.5rem] bg-slate-900 border border-slate-800 overflow-hidden px-8 py-16 md:px-16 md:py-20 text-center text-white shadow-2xl shadow-sky-950/20 transform-gpu"
         >
-          <SpotlightCard
-            theme="dark"
-            intensity={0.4}
-            spotlightSize={420}
-            spotlightColor="rgba(56, 189, 248, 0.3)"
-            className="relative rounded-3xl md:rounded-[2.5rem] !bg-slate-900 border border-slate-800 px-8 py-16 md:px-16 md:py-20 text-center text-white shadow-2xl shadow-sky-950/20 transform-gpu overflow-hidden"
-          >
-            {/* Subtle Ambient Radial Glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(56,189,248,0.15)_0%,transparent_70%)] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_70%)] pointer-events-none" />
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(56,189,248,0.15)_0%,transparent_70%)] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.15)_0%,transparent_70%)] pointer-events-none" />
 
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-              {/* Badge with React Bits DecryptedText */}
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-sky-400 text-xs font-bold uppercase tracking-wider mb-6 backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5" />
-                <DecryptedText
-                  text={t("contact_badge")}
-                  animateOn="view"
-                  speed={40}
-                  maxIterations={10}
-                  className="text-xs font-bold uppercase tracking-wider text-sky-400"
-                  encryptedClassName="text-xs font-bold uppercase tracking-wider text-sky-200"
-                />
-              </div>
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-sky-400 text-xs font-bold uppercase tracking-wider mb-6 backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t("contact_badge")}</span>
+            </div>
 
             {/* Headline */}
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
@@ -97,8 +82,7 @@ export default function ContactCTA() {
               </div>
             </div>
           </div>
-        </SpotlightCard>
-      </motion.div>
+        </motion.div>
       </div>
     </section>
   );

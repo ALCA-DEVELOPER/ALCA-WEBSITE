@@ -46,13 +46,13 @@ export default function Portfolio() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Carousel showcase items featuring the live projects & visual highlights
+  // Carousel showcase items featuring live web projects
   const carouselItems = [
     {
       src: "/personal-branding.webp",
       alt: "Al-Fakhri Portfolio Website",
       title: "Al-Fakhri Portfolio",
-      subtitle: "Personal Branding & Creative Developer",
+      subtitle: "Personal Branding & Portfolio Web",
     },
     {
       src: "/jp-co.webp",
@@ -61,10 +61,28 @@ export default function Portfolio() {
       subtitle: "Corporate & Strategic Advisory Profile",
     },
     {
+      src: "/ecotani.webp",
+      alt: "Eco-Tani Precision Agriculture SaaS Platform",
+      title: "Eco-Tani SaaS",
+      subtitle: "Precision Agriculture & Farming Platform",
+    },
+    {
       src: "/data-salyer.webp",
       alt: "Data Slayer Tech Event Website",
       title: "Data Slayer",
-      subtitle: "Tech & Data Competition Event Platform",
+      subtitle: "Tech & Data Hackathon Event Platform",
+    },
+    {
+      src: "/finwise.webp",
+      alt: "Finwise FinTech Landing Page Template",
+      title: "Finwise",
+      subtitle: "FinTech & SaaS Product Landing Page",
+    },
+    {
+      src: "/tirto.webp",
+      alt: "Rumah Makan Tirto Mulyo Website",
+      title: "RM Tirto Mulyo",
+      subtitle: "Authentic Indonesian Dining & Culinary",
     },
     {
       src: "/finora.webp",
@@ -78,24 +96,6 @@ export default function Portfolio() {
       title: "Cycling Analytics",
       subtitle: "Athletic Performance & Telemetry Dashboard",
     },
-    {
-      src: "/marinne.webp",
-      alt: "Marine Intelligence System Dashboard",
-      title: "Marine Intelligence",
-      subtitle: "Oceanographic Telemetry & Real-Time Analytics",
-    },
-    {
-      src: "/ecotani.webp",
-      alt: "Eco-Tani Smart Agriculture SaaS",
-      title: "Eco-Tani Platform",
-      subtitle: "Precision Agriculture & Cloud Monitoring",
-    },
-    {
-      src: "/company-profile.webp",
-      alt: "Convivium Italian Restaurant Profile",
-      title: "Convivium Profile",
-      subtitle: "Authentic Italian Restaurant & Pastry",
-    },
   ];
 
   // 4 Dedicated Folders with categorized web projects
@@ -106,7 +106,7 @@ export default function Portfolio() {
       label: t("port_folder_tab_portfolio"),
       color: "#0284c7", // Sky blue
       icon: Briefcase,
-      badge: "Personal & Creative",
+      badge: "Creative & Showcase",
       items: [
         {
           title: "Al-Fakhri Portfolio",
@@ -116,18 +116,18 @@ export default function Portfolio() {
           isUpcoming: false,
         },
         {
-          title: "",
-          tag: "",
-          image: null,
-          url: null,
-          isUpcoming: true,
+          title: "Seabiru UPI",
+          tag: "Marine Ecosystem & Edu",
+          image: "/seabiru.webp",
+          url: "https://seabiru.netlify.app/",
+          isUpcoming: false,
         },
         {
-          title: "",
-          tag: "",
-          image: null,
-          url: null,
-          isUpcoming: true,
+          title: "Finwise",
+          tag: "FinTech Landing Page",
+          image: "/finwise.webp",
+          url: "https://landinggabut.vercel.app/",
+          isUpcoming: false,
         },
       ],
     },
@@ -147,18 +147,18 @@ export default function Portfolio() {
           isUpcoming: false,
         },
         {
-          title: "Convivium Restaurant",
-          tag: "F&B & Hospitality",
-          image: "/company-profile.webp",
-          url: "https://convivium.netlify.app",
+          title: "Cantika Sejati",
+          tag: "Eyelashes Manufacturer",
+          image: "/cantika-sejati.webp",
+          url: "https://cantikasejatieyelashes.com/",
           isUpcoming: false,
         },
         {
-          title: "",
-          tag: "",
-          image: null,
-          url: null,
-          isUpcoming: true,
+          title: "RM Tirto Mulyo",
+          tag: "Restaurant & Culinary",
+          image: "/tirto.webp",
+          url: "https://tirto-mulyo.netlify.app/",
+          isUpcoming: false,
         },
       ],
     },
