@@ -3,10 +3,14 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import meomLogo from "@/assets/meom-logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Preloader() {
   const { isLoading } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   // Prevent scrolling while loading
   useEffect(() => {
@@ -24,57 +28,64 @@ export default function Preloader() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          initial={{ opacity: 1 }}
+          key="clean-minimal-preloader"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{
             opacity: 0,
             transition: { duration: 0.35, ease: "easeInOut" },
           }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white overflow-hidden transform-gpu"
+          transition={{ duration: 0.25 }}
+          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center select-none transition-colors duration-300 ${
+            isDark ? "bg-[#0B0B0C]" : "bg-white"
+          }`}
         >
-          {/* Subtle background glow using radial-gradient for 0-overhead rendering */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(56,189,248,0.18)_0%,transparent_70%)] pointer-events-none" />
-
-          <div className="flex flex-col items-center gap-8 relative z-10">
-            {/* Logo Image */}
+          <div className="flex flex-col items-center gap-4">
+            {/* Minimal Logo Mark */}
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="transform-gpu"
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="w-11 h-11 relative"
             >
               <Image
-                src="/logo.png"
-                alt="Nama Perusahaan Logo"
-                width={80}
-                height={80}
-                className="w-20 h-20 object-contain drop-shadow-[0_4px_16px_rgba(14,165,233,0.35)]"
+                src={meomLogo}
+                alt="MeoM Logo"
+                width={44}
+                height={44}
+                className="w-full h-full object-contain rounded-xl shadow-sm"
                 priority
               />
             </motion.div>
 
-            {/* Brand Text */}
+            {/* Clean Wordmark */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-5xl font-extrabold tracking-tighter flex items-center transform-gpu"
+              transition={{ duration: 0.35, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="text-2xl font-black tracking-tight flex items-center"
             >
-              <span className="text-gray-900">Nama</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500 ml-2">
-                Perusahaan
-              </span>
+              <span className={isDark ? "text-white" : "text-slate-900"}>Me</span>
+              <span className={isDark ? "text-[#C6F432]" : "text-[#4d7c0f]"}>oM</span>
+              <span className="text-[#C6F432]">.</span>
             </motion.div>
 
-            {/* Loading Bar with GPU-accelerated scaleX instead of layout-reflow width */}
-            <div className="w-48 h-1 bg-gray-100 rounded-full overflow-hidden shadow-inner mt-4">
+            {/* Deliberate Minimalist Progress Line (Fills smoothly to 100%) */}
+            <div
+              className={`w-36 h-[2px] rounded-full overflow-hidden mt-1 ${
+                isDark ? "bg-white/10" : "bg-slate-100"
+              }`}
+            >
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full w-full bg-gradient-to-r from-sky-400 to-blue-500 rounded-full origin-left transform-gpu"
+                transition={{
+                  duration: 1.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`h-full w-full rounded-full origin-left ${
+                  isDark ? "bg-[#C6F432]" : "bg-[#4d7c0f]"
+                }`}
               />
             </div>
           </div>

@@ -4,10 +4,11 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import RotatingText from "@/components/RotatingText";
 import DecryptedText from "@/components/DecryptedText";
 
-// Magnetic Button with spring physics for that smooth "Awwwards" feel
+// Magnetic Button with spring physics for smooth interaction
 function MagneticButton({
   children,
   className,
@@ -55,6 +56,8 @@ function MagneticButton({
 
 export default function Hero() {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -64,8 +67,6 @@ export default function Hero() {
     const hero = heroRef.current;
     if (!video) return;
 
-    // Strict Safari / iOS autoplay requirements:
-    // Safari requires DOM properties video.muted and video.defaultMuted to be true
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
@@ -73,15 +74,12 @@ export default function Hero() {
     const playVideo = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Handled gracefully if browser holds video until user interaction
-        });
+        playPromise.catch(() => {});
       }
     };
 
     playVideo();
 
-    // Fallback: If browser policy blocks autoplay before gesture, kick it off on first tap/scroll
     const handleInteraction = () => {
       playVideo();
       window.removeEventListener("touchstart", handleInteraction);
@@ -119,9 +117,11 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-0 lg:pb-0 overflow-hidden bg-slate-950 isolate"
+      className={`relative min-h-[100dvh] flex flex-col items-center justify-center pt-28 pb-16 lg:pt-0 lg:pb-0 overflow-hidden isolate transition-colors duration-300 ${
+        isDark ? "bg-[#0B0B0C]" : "bg-[#F8FAFC]"
+      }`}
     >
-      {/* Video Background */}
+      {/* Video Background with subtle blend */}
       <video
         ref={videoRef}
         autoPlay
@@ -130,57 +130,78 @@ export default function Hero() {
         playsInline
         preload="auto"
         poster="/hero-poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover -z-20 transform-gpu"
+        className={`absolute inset-0 w-full h-full object-cover -z-20 transform-gpu ${
+          isDark ? "opacity-35 mix-blend-screen" : "opacity-20 mix-blend-multiply"
+        }`}
       >
         <source src="/background.webm" type="video/webm" />
       </video>
 
-      {/* Dark Vignette Overlay for edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.72)_120%)] -z-10 pointer-events-none" />
+      {/* Cyber Lime Vertical Ambient Light Beam (From reference design) */}
+      <div className={`absolute inset-0 -z-10 pointer-events-none ${
+        isDark
+          ? "bg-[radial-gradient(ellipse_70%_55%_at_50%_72%,rgba(198,244,50,0.18)_0%,rgba(198,244,50,0.05)_45%,transparent_75%)]"
+          : "bg-[radial-gradient(ellipse_70%_55%_at_50%_72%,rgba(198,244,50,0.32)_0%,rgba(198,244,50,0.1)_45%,transparent_75%)]"
+      }`} />
+
+      {/* Dark/Light Vignette Overlay for edges */}
+      <div className={`absolute inset-0 -z-10 pointer-events-none ${
+        isDark
+          ? "bg-[radial-gradient(circle_at_center,transparent_20%,rgba(11,11,12,0.85)_110%)]"
+          : "bg-[radial-gradient(circle_at_center,transparent_20%,rgba(248,250,252,0.85)_110%)]"
+      }`} />
 
       {/* Smooth transition to the next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-gray-50 to-transparent z-0 pointer-events-none" />
+      <div className={`absolute bottom-0 left-0 right-0 h-40 z-0 pointer-events-none bg-gradient-to-t ${
+        isDark ? "from-[#0B0B0C] to-transparent" : "from-[#F8FAFC] to-transparent"
+      }`} />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
-        {/* Single Badge: Agensi Web Modern with DecryptedText */}
+        {/* Badge with Lime Green Accent */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-clear mb-6 md:mb-7 transform-gpu cursor-default text-white"
+          className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 md:mb-7 transform-gpu cursor-default ${
+            isDark
+              ? "bg-[#121214] border border-[#C6F432]/30 text-white shadow-[0_0_15px_rgba(198,244,50,0.12)]"
+              : "bg-white border border-lime-300 text-slate-800 shadow-sm"
+          }`}
         >
-          <Sparkles className="w-4 h-4 text-sky-400" />
+          <Sparkles className="w-4 h-4 text-[#C6F432]" />
           <DecryptedText
             text={t("hero_badge")}
             animateOn="view"
             speed={45}
             maxIterations={10}
-            className="text-sm font-semibold text-white tracking-wide"
-            encryptedClassName="text-sm font-semibold text-sky-400 tracking-wide"
+            className={`text-sm font-semibold tracking-wide ${isDark ? "text-white" : "text-slate-800"}`}
+            encryptedClassName="text-sm font-semibold text-[#C6F432] tracking-wide"
           />
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline with Serif Italic Lime Accent */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 max-w-4xl leading-[1.15] text-white transform-gpu"
+          className={`text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 max-w-4xl leading-[1.15] transform-gpu ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}
         >
           {t("hero_title_prefix")}
-          <span className="text-sky-400 font-extrabold ml-2">
-            Nama Perusahaan
+          <span className={`italic font-serif ml-2.5 ${isDark ? "text-[#C6F432]" : "text-[#4d7c0f]"}`}>
+            MeoM
           </span>
         </motion.h1>
 
-        {/* React Bits RotatingText: Clean Crystal Glass Pill */}
+        {/* RotatingText Pill */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6 md:mb-8 text-xs sm:text-sm transform-gpu"
         >
-          <span className="text-white/80 font-medium">
+          <span className={`font-medium ${isDark ? "text-gray-300" : "text-slate-600"}`}>
             {language === "id" ? "Spesialis Solusi:" : "Core Expertise:"}
           </span>
           <RotatingText
@@ -201,7 +222,11 @@ export default function Hero() {
                     "Next-Gen Dashboard & POS",
                   ]
             }
-            mainClassName="px-3.5 py-1 glass-clear text-white font-semibold text-xs sm:text-sm rounded-full"
+            mainClassName={`px-3.5 py-1 font-semibold text-xs sm:text-sm rounded-full ${
+              isDark
+                ? "bg-[#161618] border border-[#C6F432]/35 text-[#C6F432] shadow-[0_0_18px_rgba(198,244,50,0.15)]"
+                : "bg-white border border-lime-300 text-lime-800 shadow-sm"
+            }`}
             staggerFrom="last"
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -218,12 +243,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-base md:text-xl text-gray-200 mb-8 md:mb-12 max-w-2xl leading-relaxed transform-gpu"
+          className={`text-base md:text-xl mb-8 md:mb-12 max-w-2xl leading-relaxed transform-gpu ${
+            isDark ? "text-gray-300" : "text-slate-600"
+          }`}
         >
           {t("hero_description")}
         </motion.p>
 
-        {/* Magnetic CTA Buttons */}
+        {/* Action Buttons: Solid Lime Green Primary + Glass Secondary */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -232,15 +259,19 @@ export default function Hero() {
         >
           <MagneticButton
             href="#services"
-            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-full shadow-lg shadow-sky-500/25 transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#C6F432] hover:bg-[#b5e028] text-[#0B0B0C] font-extrabold rounded-full shadow-[0_0_25px_rgba(198,244,50,0.35)] transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer active:scale-[0.98]"
           >
             <span>{t("hero_btn_pricing")}</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-200" />
+            <ArrowRight className="w-5 h-5 text-[#0B0B0C] group-hover:translate-x-1.5 transition-transform duration-200" />
           </MagneticButton>
 
           <MagneticButton
             href="#contact"
-            className="w-full sm:w-auto px-8 py-3.5 glass-clear text-white font-semibold rounded-full transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-[0.98]"
+            className={`w-full sm:w-auto px-8 py-3.5 font-semibold rounded-full transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-[0.98] ${
+              isDark
+                ? "bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#C6F432]/40 text-white"
+                : "bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 shadow-sm"
+            }`}
           >
             <span>{t("hero_btn_consult")}</span>
           </MagneticButton>

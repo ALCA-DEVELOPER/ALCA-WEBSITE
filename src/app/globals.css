@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #3b82f6;
-  --color-brand-purple: #8b5cf6;
-  --color-brand-dark: #0f172a;
+  --color-midnight: #0B0B0C;
+  --color-midnight-card: #121214;
+  --color-midnight-surface: #17171A;
+  --color-lime: #C6F432;
   --font-sans: var(--font-inter);
 }
 
 @layer base {
-  :root {
-    --background: #f0f9ff; /* sky-50, soft light blue */
-    --foreground: #0f172a; /* slate-900 */
+  :root,
+  [data-theme="light"] {
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+  }
+
+  [data-theme="dark"] {
+    --background: #0B0B0C;
+    --foreground: #FFFFFF;
   }
 }
 
@@ -20,6 +27,7 @@ body {
   font-family: var(--font-sans), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* GPU acceleration helper */
@@ -64,24 +72,47 @@ body {
   }
 }
 
-/* Clean Crystal Frosted Glass (Bening & Minimalis) */
+/* Cyber Luxury Frosted Dark Glass */
 .glass-clear {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 20, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.45);
 }
 
 .glass-clear:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(22, 22, 26, 0.85);
+  border-color: rgba(198, 244, 50, 0.35);
 }
 
 .glass-clear-scrolled {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(11, 11, 12, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Luxury Frosted Light Glass - High Contrast & Distinct Definition */
+.glass-clear-light {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.glass-clear-light:hover {
+  background: #ffffff;
+  border-color: rgba(132, 204, 22, 0.6);
+  box-shadow: 0 14px 34px -4px rgba(15, 23, 42, 0.12), 0 6px 14px -2px rgba(15, 23, 42, 0.05);
+}
+
+.glass-clear-light-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  box-shadow: 0 16px 40px -4px rgba(15, 23, 42, 0.14), 0 8px 18px -2px rgba(15, 23, 42, 0.06);
 }

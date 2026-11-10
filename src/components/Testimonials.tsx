@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Star, Quote, Sparkles, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 const reviews = [
   {
@@ -10,7 +11,7 @@ const reviews = [
     role: "Founder & CEO",
     company: "Convivium Hospitality",
     avatar: "DP",
-    color: "from-blue-600 to-indigo-600",
+    color: "from-[#1a1a1c] to-[#0B0B0C] border border-[#C6F432]/40 text-[#C6F432]",
     rating: 5,
     text: {
       id: "Website company profile yang dibuat sangat elegan dan responsif. Pengunjung restoran kami naik signifikan dan konversi reservasi online meningkat hingga 40%.",
@@ -34,7 +35,7 @@ const reviews = [
     role: "Lead Product Manager",
     company: "Marine Intelligence System",
     avatar: "RA",
-    color: "from-sky-500 to-blue-700",
+    color: "from-lime-400 to-emerald-600",
     rating: 5,
     text: {
       id: "Pengerjaan web dashboard data analitik diselesaikan tepat waktu. Desain pixel-perfect, bersih, dan mudah digunakan oleh seluruh stakeholder kami.",
@@ -45,9 +46,13 @@ const reviews = [
 
 export default function Testimonials() {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <section className="py-24 relative z-10 bg-gray-50/60 border-t border-gray-100">
+    <section className={`py-24 relative z-10 border-t transition-colors duration-300 ${
+      isDark ? "bg-[#0B0B0C] border-white/5" : "bg-[#F8FAFC] border-slate-200"
+    }`}>
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <motion.div
@@ -55,7 +60,11 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-100 text-sky-600 text-xs font-bold uppercase tracking-wider mb-4"
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${
+              isDark
+                ? "bg-[#121214] border border-[#C6F432]/30 text-[#C6F432] shadow-[0_0_15px_rgba(198,244,50,0.1)]"
+                : "bg-lime-50 border border-lime-300 text-lime-800"
+            }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t("testi_badge")}</span>
@@ -66,10 +75,12 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 transform-gpu"
+            className={`text-3xl md:text-5xl font-extrabold tracking-tight mb-4 transform-gpu ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}
           >
             {t("testi_title")}{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
+            <span className={`italic font-serif ${isDark ? "text-[#C6F432]" : "text-[#4d7c0f]"}`}>
               {t("testi_title_highlight")}
             </span>
           </motion.h2>
@@ -79,7 +90,9 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg transform-gpu"
+            className={`max-w-2xl mx-auto text-base md:text-lg transform-gpu ${
+              isDark ? "text-gray-400" : "text-slate-600"
+            }`}
           >
             {t("testi_subtitle")}
           </motion.p>
@@ -95,27 +108,37 @@ export default function Testimonials() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="p-8 rounded-3xl bg-white border border-gray-200/80 shadow-xs hover:shadow-xl hover:border-sky-200 transition-[box-shadow,border-color] duration-300 flex flex-col justify-between transform-gpu relative group"
+              className={`p-8 rounded-3xl transition-all duration-300 flex flex-col justify-between transform-gpu relative group ${
+                isDark
+                  ? "bg-[#121214] border border-white/10 shadow-xs hover:border-[#C6F432]/40 hover:shadow-[0_0_30px_rgba(198,244,50,0.12)]"
+                  : "bg-white border border-slate-200/90 shadow-sm hover:border-lime-400 hover:shadow-xl"
+              }`}
             >
               <div>
                 {/* Stars & Quote */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-1">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      <Star key={i} className="w-4 h-4 fill-[#C6F432] text-[#C6F432]" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-gray-200 group-hover:text-sky-300 transition-colors" />
+                  <Quote className={`w-6 h-6 transition-colors ${
+                    isDark ? "text-white/20 group-hover:text-[#C6F432]" : "text-slate-300 group-hover:text-lime-600"
+                  }`} />
                 </div>
 
                 {/* Testimonial text */}
-                <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8 italic">
+                <p className={`text-sm md:text-base leading-relaxed mb-8 italic ${
+                  isDark ? "text-gray-300" : "text-slate-700"
+                }`}>
                   &ldquo;{language === "id" ? review.text.id : review.text.en}&rdquo;
                 </p>
               </div>
 
               {/* Client Info */}
-              <div className="flex items-center gap-3.5 pt-6 border-t border-gray-100">
+              <div className={`flex items-center gap-3.5 pt-6 border-t ${
+                isDark ? "border-white/10" : "border-slate-100"
+              }`}>
                 <div
                   className={`w-11 h-11 rounded-full bg-gradient-to-tr ${review.color} text-white font-bold flex items-center justify-center text-sm shadow-xs shrink-0`}
                 >
@@ -123,11 +146,11 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
-                    <h4 className="font-bold text-gray-900 text-sm">{review.name}</h4>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-500" />
+                    <h4 className={`font-bold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>{review.name}</h4>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C6F432]" />
                   </div>
-                  <p className="text-xs text-gray-500 font-medium">
-                    {review.role}, <span className="text-gray-700">{review.company}</span>
+                  <p className={`text-xs font-medium ${isDark ? "text-gray-400" : "text-slate-500"}`}>
+                    {review.role}, <span className={isDark ? "text-gray-200" : "text-slate-700"}>{review.company}</span>
                   </p>
                 </div>
               </div>

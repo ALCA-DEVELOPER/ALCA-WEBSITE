@@ -27,20 +27,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       // Ignore storage access issues
     }
 
-    // Snappy initial loading timer (1.3s)
+    // Deliberate, smooth initial loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1300);
+    }, 1600);
     return () => clearTimeout(timer);
   }, []);
 
   const setLanguage = (lang: Language) => {
-    // Scroll to top
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    
-    // Show loading
+    if (lang === language) return;
+
+    // Show sleek loading transition
     setIsLoading(true);
 
     setTimeout(() => {
@@ -53,7 +50,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       
       setTimeout(() => {
         setIsLoading(false);
-      }, 700);
+      }, 1150);
     }, 300);
   };
 
